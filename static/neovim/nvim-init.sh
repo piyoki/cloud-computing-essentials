@@ -66,15 +66,15 @@ MINIMAP_URL_AMD64=https://github.com/wfxr/code-minimap/releases/download/v0.5.1/
 
 nvim_setup() {
   echo $(whoami)
-  $(echo -e "\n[INFO] neovim configuration now started" && \
-  mkdir -p $HOME/.vim && \
-  mkdir -p $HOME/.config/nvim && \
-  echo ">>> cloning source code from remote repository" && \
-  git clone https://github.com/yqlbu/dotfiles.git $HOME/dotfiles && \ 
+  echo -e "\n[INFO] neovim configuration now started"
+  mkdir -p $HOME/.vim
+  mkdir -p $HOME/.config/nvim
+  echo ">>> cloning source code from remote repository"
+  git clone https://github.com/yqlbu/dotfiles.git $HOME/dotfiles >/dev/null 2>&1
   echo ">>> finished" && \
-  cp -r ${DOT_PATH}/nvim/.config/nvim/* ~/.config/nvim && \
-  echo ">>> installing neovim plugins" && \
-  nvim --headless +PlugInstall +qall) | tee logs.txt >/dev/null 2>&1
+  cp -r ${DOT_PATH}/nvim/.config/nvim/* ~/.config/nvim
+  echo ">>> installing neovim plugins"
+  nvim --headless +PlugInstall +qall >/dev/null 2>&1
 }
 
 # configure plugins settings
@@ -103,7 +103,7 @@ clearn_up() {
 
 # execution
 init
-nvim_setup
+nvim_setup | tee logs.txt
 plugins_setup
 clearn_up
 
