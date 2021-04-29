@@ -50,8 +50,8 @@ init() {
 
   # install plugins
   echo ">>> installing neccessary plugin prerequisites"
-  pip install -U pip && pip install -U \
-      pynvim neovim-remote pylint ranger-fm >/dev/null 2>&1
+  pip install -U pip >/dev/null 2>&1 
+  pip install -U pynvim neovim-remote pylint ranger-fm >/dev/null 2>&1
   sudo npm install -g neovim vim-node-rpc \
       instant-markdown-d@next typescript bash-language-server --noconfirm >/dev/null 2>&1
 }
@@ -79,10 +79,10 @@ plugins_setup() {
   # minimap
   echo ">>> installing minimap plugin"
   if [[ "$(lscpu | grep Architecture | awk '!/x86_64/{exit 1}')" ]]; then
-    curl -fSsL ${MINIMAP_URL_AMD64} -o minimap-install.deb && dpkg -i minimap-install.deb >/dev/null 2>&1
+    curl -fSsL ${MINIMAP_URL_AMD64} -o minimap-install.deb && sudo dpkg -i minimap-install.deb >/dev/null 2>&1
     rm -rf minimap-install.deb
   else
-    curl -fSsL ${MINIMAP_URL_ARM64} -o minimap-install.deb && dpkg -i minimap-install.deb >/dev/null 2>&1
+    curl -fSsL ${MINIMAP_URL_ARM64} -o minimap-install.deb && sudo dpkg -i minimap-install.deb >/dev/null 2>&1
     rm -rf minimap-install.deb
   fi
   # ranger
