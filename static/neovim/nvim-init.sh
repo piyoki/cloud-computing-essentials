@@ -13,7 +13,6 @@ echo -e "\033[1;37m
 "
 echo -e "\033[1;37m[INFO] Neovim Cloud configuration will start in 3 seconds ... \n"
 sleep 3
-echo -e "\n[INFO] bootstrap started!"
 
 init() {
   echo -e "\n[INFO] bootstrap process now started"
