@@ -70,34 +70,39 @@ nvim_setup() {
   mkdir -p $PWD/.config/nvim
   echo ">>> cloning source code from remote repository"
   git clone https://github.com/yqlbu/dotfiles.git $PWD/dotfiles >/dev/null 2>&1
-  echo ">>> finished" && \
+  echo ">>> finished"
   cp -r ${DOT_PATH}/nvim/.config/nvim/* ~/.config/nvim
   echo ">>> installing neovim plugins"
   nvim --headless +PlugInstall +qall >/dev/null 2>&1
+  echo ">>> finished"
 }
 
 # configure plugins settings
 plugins_setup() {
   echo -e "\n[INFO] plugins configuration now started"
   # minimap
-  echo ">>> installing minimap plugin"
   if [[ $(lscpu | grep Architecture | awk '!/x86_64/{exit 1}') -ne 1 ]]; then
       curl -fSsL ${MINIMAP_URL_AMD64} -o minimap-install.deb && sudo dpkg -i minimap-install.deb >/dev/null 2>&1
-      rm -rf minimap-install.deb
   else
       curl -fSsL ${MINIMAP_URL_ARM64} -o minimap-install.deb && sudo dpkg -i minimap-install.deb >/dev/null 2>&1
-      rm -rf minimap-install.deb
+      
   fi
+  echo ">>> finished"
+  rm -rf minimap-install.deb
   # ranger
   echo ">>> setting up ranger plugin"
-  cp -r ${DOT_PATH}/ranger/.config/ranger/* ~/.config/ranger
+  cp -r ${DOT_PATH}/ranger/.config/ranger/* $PWD/.config/ranger
+  echo ">>> finished"
   # lazygit
   echo ">>> setting up lazygit plugin"
-  cp -r ${DOT_PATH}/lazygit/.config/jesseduffield/lazygit/* ~/.config/jesseduffield/lazygit
+  cp -r ${DOT_PATH}/lazygit/.config/jesseduffield/lazygit/* $PWD/.config/jesseduffield/lazygit
+  echo ">>> finished"
 }
 
 clearn_up() {
+echo -e "\n[INFO] clearning up"
   rm -rf ${DOT_PATH}
+  echo ">>> finished"
 }
 
 # execution
