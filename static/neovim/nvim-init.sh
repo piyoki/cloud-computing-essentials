@@ -106,10 +106,8 @@ plugins_setup() {
 clearn_up() {
   echo -e "\n[INFO] clearning up"
   chown -R $USER:$USER_ID $HOME/.vim
-  chown -R $USER:$USER_ID $HOME/.config/nvim
-  chown -R $USER:$USER_ID $HOME/.config/coc
-  chown -R $USER:$USER_ID $HOME/.config/ranger
-  chown -R $USER:$USER_ID $HOME/.config/jesseduffield/lazygit
+  chown -R $USER:$USER_ID $HOME/.config
+  chown -R $USER:$USER_ID $HOME/.LfCache
   chown -R $USER:$USER_ID $HOME/.cache
   rm -rf ${DOT_PATH}
   echo ">>> finished"
