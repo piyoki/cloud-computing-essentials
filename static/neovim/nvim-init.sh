@@ -111,4 +111,6 @@ nvim_setup
 plugins_setup
 clearn_up
 
+# add timer features !!!
+
 echo ">>> neovim bootstrap done!"
