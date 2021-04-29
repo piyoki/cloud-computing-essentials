@@ -15,7 +15,7 @@ echo -e "\033[1;37m[INFO] Neovim Cloud configuration will start in 3 seconds ...
 sleep 3
 
 init() {
-  echo -e "\n[INFO] bootstrap process now started"
+  echo -e "[INFO] bootstrap process now started"
 
   echo ">>> updating package repositories"
   # packages update and installation
@@ -69,11 +69,13 @@ MINIMAP_URL_AMD64=https://github.com/wfxr/code-minimap/releases/download/v0.5.1/
 nvim_setup() {
   echo -e "\n[INFO] neovim configuration now started"
   mkdir -p $HOME/.vim
+  chown -R $USER:$USER_ID $HOME/.config/nvim
   mkdir -p $HOME/.config/nvim
   echo ">>> cloning source code from remote repository"
   git clone https://github.com/yqlbu/dotfiles.git $HOME/dotfiles >/dev/null 2>&1
   echo ">>> finished"
   cp -r ${DOT_PATH}/nvim/.config/nvim/* $HOME/.config/nvim
+  chown -R $USER:$USER_ID $HOME/.config/nvim
   echo ">>> installing neovim plugins"
   nvim --headless +PlugInstall +qall >/dev/null 2>&1
   echo ">>> finished"
@@ -95,11 +97,13 @@ plugins_setup() {
   echo ">>> setting up ranger plugin"
   mkdir -p $HOME/.config/ranger
   cp -r ${DOT_PATH}/ranger/.config/ranger/* $HOME/.config/ranger
+  chown -R $USER:$USER_ID $HOME/.config/ranger
   echo ">>> finished"
   # lazygit
   echo ">>> setting up lazygit plugin"
   mkdir -p $HOME/.config/jesseduffield/lazygit
   cp -r ${DOT_PATH}/lazygit/.config/jesseduffield/lazygit/* $HOME/.config/jesseduffield/lazygit
+  chown -R $USER:$USER_ID $HOME/.config/jesseduffield/lazygit
   echo ">>> finished"
 }
 
