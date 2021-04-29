@@ -66,6 +66,8 @@ MINIMAP_URL_AMD64=https://github.com/wfxr/code-minimap/releases/download/v0.5.1/
 
 nvim_setup() {
   echo $(whoami)
+  echo $USER
+  echo $PWD
   echo -e "\n[INFO] neovim configuration now started"
   mkdir -p $HOME/.vim
   mkdir -p $HOME/.config/nvim
