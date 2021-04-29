@@ -59,13 +59,15 @@ init() {
 
 # environment variables
 REPO_URL=github.com/yqlbu/dotfiles
-DOT_PATH=$HOME/dotfiles
+USER=$(logname)
+USER_ID=$(id -u $(logname))
+HOME=/home/$(logname)
+DOT_PATH=/home/$(logname)/dotfiles
 MINIMAP_URL_ARM64=https://github.com/wfxr/code-minimap/releases/download/v0.5.1/code-minimap_0.5.1_arm64.deb
 MINIMAP_URL_AMD64=https://github.com/wfxr/code-minimap/releases/download/v0.5.1/code-minimap_0.5.1_amd64.deb
 
 nvim_setup() {
   echo -e "\n[INFO] neovim configuration now started"
-  su - ubuntu
   mkdir -p $HOME/.vim
   mkdir -p $HOME/.config/nvim
   echo ">>> cloning source code from remote repository"
