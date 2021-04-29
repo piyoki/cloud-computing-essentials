@@ -110,6 +110,7 @@ clearn_up() {
   chown -R $USER:$USER_ID $HOME/.config/coc
   chown -R $USER:$USER_ID $HOME/.config/ranger
   chown -R $USER:$USER_ID $HOME/.config/jesseduffield/lazygit
+  chown -R $USER:$USER_ID $HOME/.cache
   rm -rf ${DOT_PATH}
   echo ">>> finished"
 }
