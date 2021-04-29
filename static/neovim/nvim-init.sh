@@ -79,7 +79,6 @@ plugins_setup() {
   # minimap
   echo ">>> installing minimap plugin"
   if [[ $(lscpu | grep Architecture | awk '!/x86_64/{exit 1}') -ne 1 ]]; then
-      echo "worked!"
       curl -fSsL ${MINIMAP_URL_AMD64} -o minimap-install.deb && sudo dpkg -i minimap-install.deb >/dev/null 2>&1
       rm -rf minimap-install.deb
   else
