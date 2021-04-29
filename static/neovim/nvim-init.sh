@@ -91,10 +91,12 @@ plugins_setup() {
   rm -rf minimap-install.deb
   # ranger
   echo ">>> setting up ranger plugin"
+  mkdir -p $PWD/.config/ranger
   cp -r ${DOT_PATH}/ranger/.config/ranger/* $PWD/.config/ranger
   echo ">>> finished"
   # lazygit
   echo ">>> setting up lazygit plugin"
+  mkdir -p $PWD/.config/jesseduffield/lazygit
   cp -r ${DOT_PATH}/lazygit/.config/jesseduffield/lazygit/* $PWD/.config/jesseduffield/lazygit
   echo ">>> finished"
 }
