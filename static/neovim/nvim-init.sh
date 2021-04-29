@@ -8,7 +8,7 @@ echo -e "\033[0;35m$(figlet Nvim Cloud)"
 echo -e "\033[1;37m
 [WELCOME]  Welcome to Neovim Cloud Bootstrap Process !!
 [AUTHOR]   Kevin Yu
-[LISCENSE] MIT 2.0
+[LICENSE]  MIT 2.0
 [SOURCE]   github.com/yqlbu/cloud-computing-essentials
 "
 echo -e "\033[1;37m[INFO] Neovim Cloud configuration will start in 3 seconds ... \n"
