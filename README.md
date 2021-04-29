@@ -5,5 +5,5 @@ Essential bootstrap scripts for cloud-computing usage
 ### Neovim
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yqlbu/cloud-computing-essentials/master/neovim/nvim-init.sh | sudo bash -
+curl -fsSL https://bit.ly/3eICTpY | sudo bash -
 ```
