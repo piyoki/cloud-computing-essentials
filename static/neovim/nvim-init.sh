@@ -15,7 +15,7 @@ sleep 3
 echo ">>> bootstrap started!"
 
 init() {
-  echo "[INFO] bootstrap process now started"
+  echo "\n[INFO] bootstrap process now started"
 
   echo ">>> updating package repositories"
   # packages update and installation
@@ -64,18 +64,19 @@ MINIMAP_URL_ARM64=https://github.com/wfxr/code-minimap/releases/download/v0.5.1/
 MINIMAP_URL_AMD64=https://github.com/wfxr/code-minimap/releases/download/v0.5.1/code-minimap_0.5.1_amd64.deb
 
 nvim_setup() {
-  echo "[INFO] neovim configuration now started"
+  echo "\n[INFO] neovim configuration now started"
   mkdir -p $HOME/.vim
   mkdir -p $HOME/.config/nvim
+  echo ">>> cloning source code from remote repository"
   git clone https://github.com/yqlbu/dotfiles.git $HOME/dotfiles >/dev/null 2>&1
   cp -r ${DOT_PATH}/nvim/.config/nvim/* ~/.config/nvim
-  echo -e "==> >>> installing neovim plugins"
+  echo ">>> installing neovim plugins"
   nvim --headless +PlugInstall +qall > /dev/null 2>&1
 }
 
 # configure plugins settings
 plugins_setup() {
-  echo "[INFO] plugins configuration now started"
+  echo "\n[INFO] plugins configuration now started"
   # minimap
   echo ">>> installing minimap plugin"
   if [[ $(lscpu | grep Architecture | awk '!/x86_64/{exit 1}') -ne 1 ]]; then
