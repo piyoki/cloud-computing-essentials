@@ -19,7 +19,7 @@ init() {
 
   echo ">>> updating package repositories"
   # packages update and installation
-  sudo apt update && sudo apt upgrade -y >/dev/null 2>&1
+  sudo apt update >/dev/null 2>&1 && sudo apt upgrade -y >/dev/null 2>&1
   sudo apt-get install git software-properties-common -y >/dev/null 2>&1
 
   if [[ ! -x "$(command -v vim)" ]]; then
@@ -43,7 +43,7 @@ init() {
 
   echo ">>> installing node and npm"
   curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - >/dev/null 2>&1
-  sudo apt-get update && apt-get install -y nodejs >/dev/null 2>&1
+  sudo apt-get update >/dev/null 2>&1 && apt-get install -y nodejs >/dev/null 2>&1
 
   echo ">>> installing essential packages"
   sudo apt install lazygit neovim golang bashtop -y >/dev/null 2>&1
