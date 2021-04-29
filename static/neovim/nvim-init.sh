@@ -71,7 +71,7 @@ nvim_setup() {
   echo ">>> cloning source code from remote repository"
   git clone https://github.com/yqlbu/dotfiles.git $PWD/dotfiles >/dev/null 2>&1
   echo ">>> finished"
-  cp -r ${DOT_PATH}/nvim/.config/nvim/* ~/.config/nvim
+  cp -r ${DOT_PATH}/nvim/.config/nvim/* $PWD/.config/nvim
   echo ">>> installing neovim plugins"
   nvim --headless +PlugInstall +qall >/dev/null 2>&1
   echo ">>> finished"
