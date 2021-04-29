@@ -11,8 +11,19 @@ func main() {
 	directory := flag.String("d", ".", "the directory of static file to host")
 	flag.Parse()
 
-	http.Handle("/", http.FileServer(http.Dir(*directory)))
+	// Neovim
+	http.HandleFunc("/neovim", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./static/neovim/nvim-init.sh")
+	})
+	// OpenCV
+	http.HandleFunc("/opencv", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./static/opencv/opencv-4.1.1-install.sh")
+	})
 
 	log.Printf("Serving %s on HTTP port: %s\n", *directory, *port)
-	log.Fatal(http.ListenAndServe(":"+*port, nil))
+
+	err := http.ListenAndServe(":"+*port, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
