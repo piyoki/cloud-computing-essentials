@@ -93,7 +93,14 @@ plugins_setup() {
   cp -r ${DOT_PATH}/lazygit/.config/jesseduffield/lazygit/* ~/.config/jesseduffield/lazygit
 }
 
+clearn_up() {
+  rm -rf ${DOT_PATH}
+}
+
+# execution
 init
-plugins_setup
 nvim_setup
-# echo ">>> neovim bootstrap done!"
+plugins_setup
+clearn_up
+
+echo ">>> neovim bootstrap done!"
