@@ -6,9 +6,10 @@ set -e
 sudo apt install -y figlet >/dev/null 2>&1
 echo -e "\033[0;35m$(figlet Nvim Cloud)"
 echo -e "\033[1;37m
-[WELCOME] Welcome to Neovim Cloud Bootstrap Process !!
-[AUTHOR] Kevin Yu
-[GITHUB] github.com/yqlbu/cloud-computing-essentials
+[WELCOME]  Welcome to Neovim Cloud Bootstrap Process !!
+[AUTHOR]   Kevin Yu
+[LISCENSE] MIT 2.0
+[SOURCE]   github.com/yqlbu/cloud-computing-essentials
 "
 echo -e "\033[1;37m[INFO] Neovim Cloud configuration will start in 3 seconds ... \n"
 sleep 3
