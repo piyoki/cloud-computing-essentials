@@ -20,7 +20,7 @@ init() {
   echo ">>> updating package repositories"
   # packages update and installation
   sudo apt update && sudo apt upgrade -y >/dev/null 2>&1
-  sudo apt-get install software-properties-common -y >/dev/null 2>&1
+  sudo apt-get install git software-properties-common -y >/dev/null 2>&1
 
   if [[ ! -x "$(command -v vim)" ]]; then
     echo ">>> vim not found, installing vim"
