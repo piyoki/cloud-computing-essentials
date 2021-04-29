@@ -42,8 +42,8 @@ init() {
   sudo add-apt-repository ppa:bashtop-monitor/bashtop -y >/dev/null 2>&1
 
   echo ">>> installing node and npm"
-  curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-  sudo apt-get update && apt-get install -y nodejs
+  curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - >/dev/null 2>&1
+  sudo apt-get update && apt-get install -y nodejs >/dev/null 2>&1
 
   echo ">>> installing essential packages"
   sudo apt install lazygit neovim golang bashtop -y >/dev/null 2>&1
