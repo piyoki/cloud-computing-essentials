@@ -24,12 +24,12 @@ init() {
 
   if [[ ! -x "$(command -v vim)" ]]; then
     echo ">>> vim not found, installing vim"
-    sudo apt install vim -y
+    sudo apt install vim -y >/dev/null 2>&1
   fi
 
   if [[ ! -x "$(command -v python)" ]]; then
     echo ">>> python environment not found, installing python"
-    sudo apt install python3 python3-pip -y
+    sudo apt install python3 python3-pip -y >/dev/null 2>&1
     # setup python bin and pip
     echo ">>> setting up python environment"
     sudo rm -rf /usr/bin/python && sudo ln -s /usr/bin/python3 /usr/bin/python
