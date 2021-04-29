@@ -60,19 +60,16 @@ init() {
 
 # environment variables
 REPO_URL=github.com/yqlbu/dotfiles
-DOT_PATH=$HOME/dotfiles
+DOT_PATH=$PWD/dotfiles
 MINIMAP_URL_ARM64=https://github.com/wfxr/code-minimap/releases/download/v0.5.1/code-minimap_0.5.1_arm64.deb
 MINIMAP_URL_AMD64=https://github.com/wfxr/code-minimap/releases/download/v0.5.1/code-minimap_0.5.1_amd64.deb
 
 nvim_setup() {
-  echo $(whoami)
-  echo $USER
-  echo $PWD
   echo -e "\n[INFO] neovim configuration now started"
-  mkdir -p $HOME/.vim
-  mkdir -p $HOME/.config/nvim
+  mkdir -p $PWD/.vim
+  mkdir -p $PWD/.config/nvim
   echo ">>> cloning source code from remote repository"
-  git clone https://github.com/yqlbu/dotfiles.git $HOME/dotfiles >/dev/null 2>&1
+  git clone https://github.com/yqlbu/dotfiles.git $PWD/dotfiles >/dev/null 2>&1
   echo ">>> finished" && \
   cp -r ${DOT_PATH}/nvim/.config/nvim/* ~/.config/nvim
   echo ">>> installing neovim plugins"
@@ -105,7 +102,7 @@ clearn_up() {
 
 # execution
 init
-nvim_setup | tee logs.txt
+nvim_setup
 plugins_setup
 clearn_up
 
