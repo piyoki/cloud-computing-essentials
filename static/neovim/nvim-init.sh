@@ -121,4 +121,4 @@ clearn_up
 
 # add timer features !!!
 
-echo ">>> neovim bootstrap done!"
+echo -e "\n[INFO] neovim bootstrap done!"
