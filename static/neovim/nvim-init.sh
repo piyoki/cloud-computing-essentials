@@ -78,12 +78,13 @@ plugins_setup() {
   echo "[INFO] plugins configuration now started"
   # minimap
   echo ">>> installing minimap plugin"
-  if [[ "$(lscpu | grep Architecture | awk '!/x86_64/{exit 1}')" ]]; then
-    curl -fSsL ${MINIMAP_URL_AMD64} -o minimap-install.deb && sudo dpkg -i minimap-install.deb >/dev/null 2>&1
-    rm -rf minimap-install.deb
+  if [[ $(lscpu | grep Architecture | awk '!/x86_64/{exit 1}') -ne 1 ]]; then
+      echo "worked!"
+      curl -fSsL ${MINIMAP_URL_AMD64} -o minimap-install.deb && sudo dpkg -i minimap-install.deb >/dev/null 2>&1
+      rm -rf minimap-install.deb
   else
-    curl -fSsL ${MINIMAP_URL_ARM64} -o minimap-install.deb && sudo dpkg -i minimap-install.deb >/dev/null 2>&1
-    rm -rf minimap-install.deb
+      curl -fSsL ${MINIMAP_URL_ARM64} -o minimap-install.deb && sudo dpkg -i minimap-install.deb >/dev/null 2>&1
+      rm -rf minimap-install.deb
   fi
   # ranger
   echo ">>> setting up ranger plugin"
