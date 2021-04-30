@@ -125,4 +125,4 @@ clearn_up
 end=$SECONDS 
 
 echo -e "\n[INFO] neovim bootstrap done!"
-echo ">>> duration: $((end-start)) seconds."
+echo ">>> duration: $((end-start)) seconds"
