@@ -54,6 +54,7 @@ init() {
   pip install -U pynvim neovim-remote pylint ranger-fm >/dev/null 2>&1
   sudo npm install -g neovim vim-node-rpc \
       instant-markdown-d@next typescript bash-language-server --noconfirm >/dev/null 2>&1
+  echo ">>> finished"
 }
 
 
