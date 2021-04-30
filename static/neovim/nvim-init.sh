@@ -114,15 +114,14 @@ clearn_up() {
 }
 
 # execution
-start=$(date +%s.%N)
+start=$SECONDS
 
 init
 nvim_setup
 plugins_setup
 clearn_up
 
-end=$(date +%s.%N)    
-runtime=$(python -c "print(${end} - ${start})")
+end=$SECONDS 
 
 echo -e "\n[INFO] neovim bootstrap done!"
-echo ">>> duration was $runtime seconds"
+echo ">>> duration: $((end-start)) seconds."
