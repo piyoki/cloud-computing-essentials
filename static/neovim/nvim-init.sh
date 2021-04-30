@@ -95,6 +95,7 @@ plugins_setup() {
   echo ">>> setting up ranger plugin"
   mkdir -p $HOME/.config/ranger
   cp -r ${DOT_PATH}/ranger/.config/ranger/* $HOME/.config/ranger
+  git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons >/dev/null 2>&1
   echo ">>> finished"
   # lazygit
   echo ">>> setting up lazygit plugin"
