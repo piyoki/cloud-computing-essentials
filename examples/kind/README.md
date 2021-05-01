@@ -13,7 +13,6 @@ kubectl cluster-info --context kind-kind-baremetal
 ```
 unset KUBECONFIG
 kind delete clusters kind-baremetal
-
 ```
 
 ## custom multiple nodes cluster
@@ -22,5 +21,4 @@ kind delete clusters kind-baremetal
 curl -fsSL https://raw.githubusercontent.com/kubernetes-sigs/kind/master/site/content/docs/user/kind-example-config.yaml -o ~/.kube/kind-example-config.yaml
 kind create cluster --config kind-example-config.yaml --name kind-baremetal
 kind delete cluster
-
 ```
