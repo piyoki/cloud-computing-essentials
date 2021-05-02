@@ -1,5 +1,5 @@
 schema_version: 20180708
-name: webserver-fn
+name: webserver-fn-neovim
 version: 1.0.1
 runtime: go
 entrypoint: ./func
