@@ -5,6 +5,7 @@
 - [Creating & Deploying Functions](https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsuploading.htm)
 - [Policy Rule Setup](https://docs.oracle.com/en-us/iaas/Content/APIGateway/Tasks/apigatewaycreatingpolicies.htm)
 - [VCN Setup & API Gateway Mapping](https://docs.oracle.com/en-us/iaas/Content/APIGateway/Tasks/apigatewaycreatingpolicies.htm)
+- [(Overview) Functions: Call a Function using API Gateway](https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/functions/func-api-gtw/01-summary.htm)
 
 ## Useful Commands
 
