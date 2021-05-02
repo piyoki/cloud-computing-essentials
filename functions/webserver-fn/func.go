@@ -1,0 +1,36 @@
+package main
+
+import (
+	"context"
+	"io"
+	"log"
+	"os"
+
+	fdk "github.com/fnproject/fdk-go"
+)
+
+func main() {
+	fdk.Handle(fdk.HandlerFunc(myHandler))
+}
+
+type Person struct {
+	Name string `json:"name"`
+}
+
+func myHandler(ctx context.Context, in io.Reader, out io.Writer) {
+	file, err := os.Open("./static/neovim/nvim-init.sh")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	data, e := io.ReadAll(file)
+	if e != nil {
+		log.Fatal(e)
+	}
+	// os.Stdout.Write(data)
+
+	log.Print("Inside Go webserver function")
+
+	// write byte output
+	out.Write(data)
+}
