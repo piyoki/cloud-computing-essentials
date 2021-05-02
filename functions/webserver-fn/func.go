@@ -13,16 +13,14 @@ func main() {
 	fdk.Handle(fdk.HandlerFunc(myHandler))
 }
 
-type Person struct {
-	Name string `json:"name"`
-}
-
 func myHandler(ctx context.Context, in io.Reader, out io.Writer) {
+	// read file stream
 	file, err := os.Open("./static/neovim/nvim-init.sh")
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// convert file stream to bytes
 	data, e := io.ReadAll(file)
 	if e != nil {
 		log.Fatal(e)
