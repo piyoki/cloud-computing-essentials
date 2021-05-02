@@ -1,0 +1,42 @@
+# Oracle Functions Demo
+
+## Setup Process
+
+- [Creating & Deploying Functions](https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsuploading.htm)
+- [Policy Rule Setup](https://docs.oracle.com/en-us/iaas/Content/APIGateway/Tasks/apigatewaycreatingpolicies.htm)
+- [VCN Setup & API Gateway Mapping](https://docs.oracle.com/en-us/iaas/Content/APIGateway/Tasks/apigatewaycreatingpolicies.htm)
+
+## Useful Commands
+
+### Fn Project CLI
+
+```
+curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
+```
+
+### Deploy
+
+```
+fn create context <my-context> --provider oracle
+fn use context <my-context>
+fn update context oracle.compartment-id <compartment-ocid>
+fn update context api-url <api-endpoint>
+fn update context registry <region-key>.ocir.io/<tenancy-namespace>/<repo-name>
+fn update context oracle.profile <profile-name>
+fn create app <app-name> --annotation oracle.com/oci/subnetIds='["<subnet-ocid>"]'
+fn build
+fn deploy -v --app <app-name>
+fn inspect function <app-name> <fn-name>
+fn invoke <app-name> <fn-name>
+```
+
+### Invoke
+
+```
+fn invoke helloworld-app helloworld-func
+
+oci raw-request --http-method POST --target-uri <Function URL> --profile <OCI Profile>
+
+# API Gateway ONLY
+curl -X POST -d '{""}' <Target Gateway Deployment URL>
+```
