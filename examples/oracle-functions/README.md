@@ -11,13 +11,13 @@
 
 ### Fn Project CLI
 
-```
+```bash
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 ```
 
 ### Deploy
 
-```
+```bash
 # Configuration and Quick Deployment
 fn create context <my-context> --provider oracle
 fn use context <my-context>
@@ -38,7 +38,7 @@ fn invoke <app-name> <fn-name>
 
 ### Invoke
 
-```
+```bash
 fn invoke helloworld-app helloworld-func
 
 oci raw-request --http-method POST --target-uri <Function URL> --profile <OCI Profile>
