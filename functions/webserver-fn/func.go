@@ -15,6 +15,7 @@ func main() {
 
 func myHandler(ctx context.Context, in io.Reader, out io.Writer) {
 	// read file stream
+	// file, err := os.Open("./static/opencv/opencv-4.1.1-install.sh")
 	file, err := os.Open("./static/neovim/nvim-init.sh")
 	if err != nil {
 		log.Fatal(err)
