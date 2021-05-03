@@ -7,7 +7,7 @@
 
 ## Create Kubernetes Seceret
 
-```
+```bash
 $ kubectl create secret docker-registry ocirsecret --docker-server=<region-code>.ocir.io --docker-username='<tenancy-name>/<oci-username>' --docker-password='<oci-auth-token>' --docker-email='<email-address>'
 
 $ kubectl get secrets
@@ -15,7 +15,7 @@ $ kubectl get secrets
 
 ## Pull Source Image and Push to OCI Registry
 
-```
+```bash
 # pull original image from Docker Hub
 $ docker pull hikariai/helloworld-nginx:latest
 
@@ -25,7 +25,7 @@ $ docker tag hikariai/helloworld-nginx:latest {region-code}.ocir.io/{tenancy-nam
 
 ## Deploy Kubernetes Application
 
-```
+```bash
 # Edit and modify the Image associated with the OCI Registry
 $ vim helloworld-lb.yaml
 
@@ -48,7 +48,7 @@ Access the application with external ip address
 
 ## Clean Up
 
-```
+```bash
 $ kubectl delete deployment helloworld-nginx-deployment
 $ kubectl delete service helloworld-nginx-service
 ```
