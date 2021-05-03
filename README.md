@@ -1,12 +1,16 @@
 # cloud-computing-essentials
 
-Essential bootstrap scripts for cloud-computing usage
+Essential bootstrap scripts and templates for cloud-computing usage cases
+
+### Bootstrap Scripts
 
 ### Neovim Cloud
 
 ```
 curl -fsSL https://get.hikariai.net/api/v1/neovim/ | sudo bash -
 ```
+
+## Common Tools
 
 ### Kubectl
 
