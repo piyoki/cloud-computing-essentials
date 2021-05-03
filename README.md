@@ -21,12 +21,9 @@
 
 </p>
 
-## Table of Contents
+## Navigation
 
-- [Bootstrap Scripts](#bootstrap-scripts)
-  - [Neovim Cloud](#neovim-cloud)
-- [Common Tools](#common-tools)
-  - [Kubectl](#kubectl)
+comping soon
 
 ## Bootstrap Scripts
 
@@ -44,3 +41,7 @@ curl -fsSL https://get.hikariai.net/api/v1/neovim/ | sudo bash -
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 sudo chmod u+x kubectl && sudo mv kubectl /usr/bin
 ```
+
+## License
+
+[MIT (C) Kevin Yu](https://github.com/yqlbu/cloud-computing-essentials/blob/master/LICENSE)
