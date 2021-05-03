@@ -11,6 +11,29 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.3
 #### Create the service account and the cluster-role-binding in the cluster
 
 ```bash
+$ cat << EOF > oke-admin-service-account.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: oke-admin
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: oke-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: oke-admin
+    namespace: kube-system
+EOF
+```
+
+```bash
 $ kubectl apply -f oke-admin-service-account.yaml
 ```
 
