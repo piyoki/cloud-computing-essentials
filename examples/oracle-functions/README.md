@@ -45,7 +45,11 @@ $ fn invoke <app-name> <fn-name>
 ### Invoke
 
 ```
+# Fn CLI
+
 $ fn invoke helloworld-app helloworld-func
+
+# Oracle Cloud CLI
 
 $ oci raw-request --http-method POST --target-uri <Function URL> --profile <OCI Profile>
 
