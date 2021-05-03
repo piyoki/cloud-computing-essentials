@@ -12,7 +12,7 @@
       <img src="https://img.shields.io/tokei/lines/github/yqlbu/cloud-computing-essentials?color=orange" alt="lines">
     </a>
     <a href="https://hub.docker.com/repository/docker/hikariai/">
-        <img src="https://img.shields.io/badge/docker-20.10-blue" alt="Version">
+        <img src="https://img.shields.io/badge/docker-v20.10-blue" alt="Version">
     </a>
     <a href="https://github.com/neovim/neovim">
         <img src="https://img.shields.io/badge/kubernetes-v1.21-navy.svg" alt="Kubernetes"/>
