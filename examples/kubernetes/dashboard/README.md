@@ -33,6 +33,8 @@ $ kubectl proxy
 $ kubectl patch svc kubernetes-dashboard -n kubernetes-dashboard -p '{"spec":{"type":"NodePort","ports":[{"port":443,"targetPort":8443,"nodePort":30443}]}}'
 ```
 
+The output from the above command includes an authentication token (a long alphanumeric string) as the value of the `token`: element
+
 #### (Optional) Expose your Kubernetes Dashboard using a LoadBalancer
 
 ```bash
@@ -72,3 +74,7 @@ monitoring-influxdb             ClusterIP      10.100.200.253   <none>        80
 ```
 
 Look at entry `kubernetes-dashboard-lb` to find the IP address to use.
+
+Demoshot
+
+![](https://github.com/yqlbu/cloud-computing-essentials/blob/master/examples/kubernetes/dashboard/dashboard.png)
