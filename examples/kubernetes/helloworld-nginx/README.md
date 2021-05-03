@@ -40,11 +40,11 @@ $ kubectl get svc
 
 **Note:** `OCI Loadbalancer` would be automatically created.
 
-![](https://enabling-cloud.github.io/oci-learning/resources/custom-docker-deploy-oke.png)
+![](https://github.com/yqlbu/cloud-computing-essentials/blob/master/examples/kubernetes/helloworld-nginx/demoshot_1.png?raw=true)
 
 Access the application with external ip address
 
-![](https://enabling-cloud.github.io/oci-learning/resources/hello-docker-oke.png)
+![](https://github.com/yqlbu/cloud-computing-essentials/blob/master/examples/kubernetes/helloworld-nginx/demoshot_2.png?raw=true)
 
 ## Clean Up
 
