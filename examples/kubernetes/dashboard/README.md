@@ -37,7 +37,6 @@ $ kubectl patch svc kubernetes-dashboard -n kubernetes-dashboard -p '{"spec":{"t
 
 ```bash
 $ kubectl apply -f k8s-dashboard-loadbalancer.yaml
-$ kubectl -n kube-system get svc
 ```
 
 This file defines a `LoadBalancer` exposing port `8443` from the Kubernetes dashboard with an allocated IP address on port `443`
@@ -48,7 +47,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: kubernetes-dashboard-lb
-  namespace: kube-system
+  namespace: kubernetes-dashboard
 spec:
   type: LoadBalancer
   ports:
@@ -58,3 +57,18 @@ spec:
   selector:
     k8s-app: kubernetes-dashboard
 ```
+
+Wait a few seconds until an IP address is ready to serve traffic on port `443`:
+
+```bash
+$ kubectl -n kube-system get svc
+NAME                            TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
+heapster                        ClusterIP      10.100.200.91    <none>        8443/TCP        30d
+kube-dns                        ClusterIP      10.100.200.2     <none>        53/UDP,53/TCP   30d
+kubernetes-dashboard            NodePort       10.100.200.149   <none>        443:32283/TCP   30d
+kubernetes-dashboard-lb         LoadBalancer   10.100.200.138   1.2.3.4       443:30006/TCP   7m38s
+metrics-server                  ClusterIP      10.100.200.205   <none>        443/TCP         30d
+monitoring-influxdb             ClusterIP      10.100.200.253   <none>        8086/TCP        30d
+```
+
+Look at entry `kubernetes-dashboard-lb` to find the IP address to use.
