@@ -32,3 +32,12 @@ $ kubectl proxy
 ```
 $ kubectl patch svc kubernetes-dashboard -n kubernetes-dashboard -p '{"spec":{"type":"NodePort","ports":[{"port":443,"targetPort":8443,"nodePort":30443}]}}'
 ```
+
+#### (Optional) Expose your Kubernetes Dashboard using a LoadBalancer
+
+```
+$ kubectl apply -f k8s-dashboard-loadbalancer.yaml
+$ kubectl -n kube-system get svc
+```
+
+This file defines a `LoadBalancer` exposing port `8443` from the Kubernetes dashboard with an allocated IP address on port `443`
