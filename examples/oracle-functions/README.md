@@ -60,5 +60,5 @@ $ oci raw-request --http-method POST --target-uri <Function URL> --profile <OCI 
 #### API Gateway ONLY
 
 ```
-
+$ curl -X POST -d '{""}' <Target Gateway Deployment URL>
 ```
