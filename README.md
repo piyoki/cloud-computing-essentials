@@ -55,7 +55,3 @@ sudo chmod u+x kubectl && sudo mv kubectl /usr/bin
 ## License
 
 [MIT (C) Kevin Yu](https://github.com/yqlbu/cloud-computing-essentials/blob/master/LICENSE)
-
-```
-
-```
