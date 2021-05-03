@@ -1,5 +1,9 @@
 # Oracle Functions Demo
 
+## Architecture
+
+![](https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/functions/func-api-gtw/images/oracle-funcs-api-gtw-diagram.png)
+
 ## Setup Process
 
 - [Creating & Deploying Functions](https://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsuploading.htm)
