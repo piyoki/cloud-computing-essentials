@@ -4,8 +4,6 @@ Essential bootstrap scripts and templates for cloud-computing usage cases
 
 ## Bootstrap Scripts
 
----
-
 ### Neovim Cloud
 
 ```
