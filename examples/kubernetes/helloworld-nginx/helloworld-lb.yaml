@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: helloworld-nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: helloworld-nginx
+    spec:
+      containers:
+        - name: hellowolrd-nginx
+          image: {region-code}.ocir.io/{tenancy-name}/{repo-name}/{image-name}:{tag}
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: ocirsecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld-nginx-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: helloworld-nginx
