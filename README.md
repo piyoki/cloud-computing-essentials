@@ -31,6 +31,8 @@ comping soon
 
 <details><summary>Neovim Cloud</summary>
 
+</br>
+
 ```
 curl -fsSL https://get.hikariai.net/api/v1/neovim/ | sudo bash -
 ```
@@ -40,6 +42,8 @@ curl -fsSL https://get.hikariai.net/api/v1/neovim/ | sudo bash -
 ## Common Tools
 
 <details><summary>Kubectl</summary>
+
+</br>
 
 ```
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
