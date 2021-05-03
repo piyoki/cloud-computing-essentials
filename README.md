@@ -5,7 +5,7 @@ Essential bootstrap scripts for cloud-computing usage
 ### Neovim Cloud
 
 ```
-curl -fsSL https://bit.ly/2RdUj5J | sudo bash -
+curl -fsSL https://get.hikariai.net/api/v1/neovim/ | sudo bash -
 ```
 
 ### Kubectl
