@@ -2,6 +2,13 @@
 
 Essential bootstrap scripts and templates for cloud-computing usage cases
 
+## Table of Contents
+
+- [Bootstrap Scripts](#bootstrap-scripts)
+  - [Neovim Cloud](#neovim-cloud)
+- [Common Tools](#common-tools)
+  - [Kubectl](#kubectl)
+
 ## Bootstrap Scripts
 
 ### Neovim Cloud
