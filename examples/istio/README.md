@@ -12,6 +12,10 @@
 - Automatic metrics, logs, and traces for all traffic within a cluster, including cluster ingress and egress.
 - Secure service-to-service communication in a cluster with strong identity-based authentication and authorization.”
 
+## Istio Architecture
+
+![](https://images.ctfassets.net/22g1lenhck4z/6zExa15ODWXaYk7x9LtEJv/a8262fbcb978f64a0456001262dca56f/1__pYrG7dF5AP9eHCa4YuTFgw.png)
+
 ## Prerequisites
 
 - Install [kubectl](https://kubernetes.io/docs/tasks/tools/) on your local machine
