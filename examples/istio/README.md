@@ -21,7 +21,7 @@
 - Install [kubectl](https://kubernetes.io/docs/tasks/tools/) on your local machine
 - Install [Helm](https://helm.sh/) on your local machine
 - Do a quick upgrade of Tiller (just to be sure you are on the latest release) --> `$ helm init --upgrade`
-- A working Cluster --> Using [Oracle Kubernetes Engine](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwii1u70yq_wAhU1Hq0GHRb9AaEYABACGgJwdg&ohost=www.google.com&cid=CAESQeD2n7sZzsajGfZoCfP4Qbor81BJm-Qob3xvyooB8kZpSGOQOS1Z2IcsOa2aY-lov5GdpKiZe6jMhEDpTaNznNbl&sig=AOD64_0rIbTkjOs0F0FvhNsGWA7LBeFvzg&q&adurl&ved=2ahUKEwiHzOb0yq_wAhWMEDQIHechA94Q0Qx6BAgDEAE) below for demo purposes
+- A working Cluster --> Using [Oracle Kubernetes Engine](https://www.oracle.com/cloud-native/container-engine-kubernetes/) below for demo purposes
 
 ## Install Steps
 
