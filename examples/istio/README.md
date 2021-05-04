@@ -14,7 +14,7 @@
 
 ## Istio Architecture
 
-![](https://images.ctfassets.net/22g1lenhck4z/6zExa15ODWXaYk7x9LtEJv/a8262fbcb978f64a0456001262dca56f/1__pYrG7dF5AP9eHCa4YuTFgw.png)
+<img src="https://images.ctfassets.net/22g1lenhck4z/6zExa15ODWXaYk7x9LtEJv/a8262fbcb978f64a0456001262dca56f/1__pYrG7dF5AP9eHCa4YuTFgw.png" width="600" height="500"/>
 
 ## Prerequisites
 
