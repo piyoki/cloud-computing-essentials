@@ -1,6 +1,6 @@
 # Kubernetes Dashboard
 
-## Commands
+## Steps
 
 #### Deploy the Kubernetes Dashboard on the new cluster
 
