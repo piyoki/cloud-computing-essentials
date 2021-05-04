@@ -1,5 +1,7 @@
 # Istio Deployment
 
+![](https://cilium.io/static/a4714968170f5d9eb1258371694f343f/29f4e/istio.png)
+
 ## Introduction to Istio
 
 [Istio](https://istio.io/latest/) is an open platform that provides a uniform way to connect, manage, and secure microservices. Istio supports managing traffic flows between microservices, enforcing access policies, and aggregating telemetry data, all without requiring changes to the microservice code. Istio gives you:
