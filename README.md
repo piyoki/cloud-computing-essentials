@@ -45,9 +45,21 @@ curl -fsSL https://get.hikariai.net/api/v1/neovim/ | sudo bash -
 
 </br>
 
+```bash
+$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+$ sudo chmod u+x kubectl && sudo mv kubectl /usr/bin
 ```
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo chmod u+x kubectl && sudo mv kubectl /usr/bin
+
+</p></details>
+
+<details><summary>Helm</summary>
+
+</br>
+
+```bash
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+$ sudo chmod u+x get_helm.sh
+$ ./get_helm.sh
 ```
 
 </p></details>
