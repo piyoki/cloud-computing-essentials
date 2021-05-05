@@ -36,7 +36,7 @@ $ curl -L https://git.io/getLatestIstio | sh -
 1. Create a namespace `istio-system` for Istio components
 
 ```bash
-$ kubectl create namespace `istio-system`
+$ kubectl create namespace istio-system
 ```
 
 2. Install the Istio base chart which contains cluster-wide resources used by the Istio control plane
