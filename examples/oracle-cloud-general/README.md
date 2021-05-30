@@ -41,7 +41,7 @@ curl -so- 86.re/bench.sh | bash
 
 # OR
 
-curl -Lso- -no-check-certificate https://raw.githubusercontent.com/oooldking/script/master/superb
+bash <(curl -Lso- https://git.io/superspeed)
 ```
 
 </p></details>
