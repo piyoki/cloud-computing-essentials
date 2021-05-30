@@ -39,9 +39,13 @@ sudo service sshd restart
 ```bash
 curl -so- 86.re/bench.sh | bash
 
-# OR
+# OR (CN)
 
 bash <(curl -Lso- https://git.io/superspeed)
+
+# OR (EN)
+
+wget -qO- --no-check-certificate https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash
 ```
 
 </p></details>
