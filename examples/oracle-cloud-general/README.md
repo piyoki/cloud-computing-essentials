@@ -32,6 +32,20 @@ sudo service sshd restart
 
 </p></details>
 
+<details><summary>Speedtest</summary>
+
+</br>
+
+```bash
+curl -so- 86.re/bench.sh | bash
+
+# OR
+
+curl -Lso- -no-check-certificate https://raw.githubusercontent.com/oooldking/script/master/superb
+```
+
+</p></details>
+
 ## Useful Links
 
 - [Arm-based cloud computing is the next big thing: Introducing Arm on Oracle Cloud Infrastructure](https://blogs.oracle.com/cloud-infrastructure/arm-based-cloud-computing-is-the-next-big-thing-introducing-arm-on-oci)
