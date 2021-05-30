@@ -1,5 +1,37 @@
 # Oracle Cloud General
 
+## Allow traffic from a specific port
+
+NOTES: also need to configure public gateway rules to allow ingress traffic
+
+```bash
+sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 8888 -j ACCEPT
+sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 443 -j ACCEPT
+sudo iptables-save
+sudo apt-get update
+sudo apt-get install iptables-persistent -y
+sudo netfilter-persistent save
+sudo netfilter-persistent reload
+```
+
+## Scripts
+
+<details><summary>Enable SSH with Password</summary>
+
+</br>
+
+```bash
+#!/bin/bash
+
+echo root:<Your Password> | sudo chpasswd root
+sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
+sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
+sudo service sshd restart
+```
+
+</p></details>
+
 ## Useful Links
 
 - [Arm-based cloud computing is the next big thing: Introducing Arm on Oracle Cloud Infrastructure](https://blogs.oracle.com/cloud-infrastructure/arm-based-cloud-computing-is-the-next-big-thing-introducing-arm-on-oci)
