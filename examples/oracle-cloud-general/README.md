@@ -42,10 +42,6 @@ curl -so- 86.re/bench.sh | bash
 # OR (CN)
 
 bash <(curl -Lso- https://git.io/superspeed)
-
-# OR (EN)
-
-wget -qO- --no-check-certificate https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash
 ```
 
 </p></details>
@@ -55,7 +51,7 @@ wget -qO- --no-check-certificate https://raw.githubusercontent.com/oooldking/scr
 </br>
 
 ```bash
-curl -s wget.racing/nench.sh | bash
+wget -qO- --no-check-certificate https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash
 ```
 
 </p></details>
