@@ -46,6 +46,16 @@ bash <(curl -Lso- https://git.io/superspeed)
 
 </p></details>
 
+<details><summary>Beenchmark test</summary>
+
+</br>
+
+```bash
+curl -s wget.racing/nench.sh | bash
+```
+
+</p></details>
+
 ## Useful Links
 
 - [Arm-based cloud computing is the next big thing: Introducing Arm on Oracle Cloud Infrastructure](https://blogs.oracle.com/cloud-infrastructure/arm-based-cloud-computing-is-the-next-big-thing-introducing-arm-on-oci)
