@@ -2,12 +2,10 @@
 
 ## Network Access
 
-Allow inbound traffic for a specific port. You also need to setup the firewall rules in the Oracle Cloud Console.
+NOTES:
 
-````
-## Allow traffic from a specific port
-
-NOTES: also need to configure public gateway rules to allow ingress traffic
+- You also need to configure public gateway rules to allow ingress traffic
+- Allow inbound traffic for a specific port. You also need to setup the firewall rules in the Oracle Cloud Console.
 
 ```bash
 sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 8888 -j ACCEPT
@@ -18,9 +16,7 @@ sudo apt-get update
 sudo apt-get install iptables-persistent -y
 sudo netfilter-persistent save
 sudo netfilter-persistent reload
-````
-
-# <<<<<<< HEAD
+```
 
 ## Scripts
 
@@ -57,7 +53,7 @@ bash <(curl -Lso- https://git.io/superspeed)
 
 </br>
 
-```bash
+`c``bash
 wget -qO- --no-check-certificate https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash
 ```
 
