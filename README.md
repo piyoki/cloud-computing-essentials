@@ -34,7 +34,7 @@ comping soon
 </br>
 
 ```
-curl -fsSL https://server.hikariai.net/api/neovim | sudo bash -
+curl -fsSL https://get.hikariai.net/api/neovim | sudo bash -
 ```
 
 </p></details>
