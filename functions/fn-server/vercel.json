@@ -1,10 +1,16 @@
 {
   "version": 2,
   "functions": {
-    "api/gin-server.go": {
+    "api/fn-neovim.go": {
+      "includeFiles": "scripts/**"
+    },
+    "api/fn-opencv.go": {
       "includeFiles": "scripts/**"
     }
   },
-  "routes": [{ "src": "/api/neovim", "dest": "api/gin-server.go" }],
+  "routes": [
+    { "src": "/api/neovim", "dest": "api/fn-neovim.go" },
+    { "src": "/api/opencv", "dest": "api/fn-opencv.go" }
+  ],
   "env": {}
 }

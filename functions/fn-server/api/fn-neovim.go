@@ -6,17 +6,9 @@ import (
 	"log"
 	"net/http"
 	"os"
-	// "os/exec"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	// out, err := exec.Command("ls", "-ltr", "api").Output()
-	// if err != nil {
-	//   fmt.Printf("%s", err)
-	// }
-	// fmt.Println("Command Successfully Executed")
-	// output := string(out[:])
-	// fmt.Println(output)
 
 	// read file stream
 	file, err := os.Open("scripts/neovim.sh")
