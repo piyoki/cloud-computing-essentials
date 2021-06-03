@@ -1,12 +1,10 @@
 # Oracle Cloud General
 
-<<<<<<< HEAD
 ## Network Access
 
 Allow inbound traffic for a specific port. You also need to setup the firewall rules in the Oracle Cloud Console.
 
-```
-=======
+````
 ## Allow traffic from a specific port
 
 NOTES: also need to configure public gateway rules to allow ingress traffic
@@ -21,10 +19,10 @@ sudo apt-get update
 sudo apt-get install iptables-persistent -y
 sudo netfilter-persistent save
 sudo netfilter-persistent reload
-```
+````
 
-<<<<<<< HEAD
-=======
+# <<<<<<< HEAD
+
 ## Scripts
 
 <details><summary>Enable SSH with Password</summary>
@@ -66,7 +64,6 @@ wget -qO- --no-check-certificate https://raw.githubusercontent.com/oooldking/scr
 
 </p></details>
 
->>>>>>> 4c6ed81e77c3ee8c31cf5e1a452f129c80a0fbd6
 ## Useful Links
 
 - [Arm-based cloud computing is the next big thing: Introducing Arm on Oracle Cloud Infrastructure](https://blogs.oracle.com/cloud-infrastructure/arm-based-cloud-computing-is-the-next-big-thing-introducing-arm-on-oci)
