@@ -1,10 +1,18 @@
 # Oracle Cloud General
 
+<<<<<<< HEAD
 ## Network Access
 
 Allow inbound traffic for a specific port. You also need to setup the firewall rules in the Oracle Cloud Console.
 
 ```
+=======
+## Allow traffic from a specific port
+
+NOTES: also need to configure public gateway rules to allow ingress traffic
+
+```bash
+>>>>>>> 4c6ed81e77c3ee8c31cf5e1a452f129c80a0fbd6
 sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 8888 -j ACCEPT
 sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 80 -j ACCEPT
 sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 443 -j ACCEPT
@@ -15,6 +23,50 @@ sudo netfilter-persistent save
 sudo netfilter-persistent reload
 ```
 
+<<<<<<< HEAD
+=======
+## Scripts
+
+<details><summary>Enable SSH with Password</summary>
+
+</br>
+
+```bash
+#!/bin/bash
+
+echo root:<Your Password> | sudo chpasswd root
+sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
+sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
+sudo service sshd restart
+```
+
+</p></details>
+
+<details><summary>Speedtest</summary>
+
+</br>
+
+```bash
+curl -so- 86.re/bench.sh | bash
+
+# OR (CN)
+
+bash <(curl -Lso- https://git.io/superspeed)
+```
+
+</p></details>
+
+<details><summary>Beenchmark test</summary>
+
+</br>
+
+```bash
+wget -qO- --no-check-certificate https://raw.githubusercontent.com/oooldking/script/master/superbench.sh | bash
+```
+
+</p></details>
+
+>>>>>>> 4c6ed81e77c3ee8c31cf5e1a452f129c80a0fbd6
 ## Useful Links
 
 - [Arm-based cloud computing is the next big thing: Introducing Arm on Oracle Cloud Infrastructure](https://blogs.oracle.com/cloud-infrastructure/arm-based-cloud-computing-is-the-next-big-thing-introducing-arm-on-oci)
