@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "functions": {
+    "api/gin-server.go": {
+      "includeFiles": "scripts/**"
+    }
+  },
+  "routes": [{ "src": "/api/neovim", "dest": "api/gin-server.go" }],
+  "env": {}
+}

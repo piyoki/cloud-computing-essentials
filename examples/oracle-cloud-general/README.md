@@ -1,5 +1,20 @@
 # Oracle Cloud General
 
+## Network Access
+
+Allow inbound traffic for a specific port. You also need to setup the firewall rules in the Oracle Cloud Console.
+
+```
+sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 8888 -j ACCEPT
+sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 443 -j ACCEPT
+sudo iptables-save
+sudo apt-get update
+sudo apt-get install iptables-persistent -y
+sudo netfilter-persistent save
+sudo netfilter-persistent reload
+```
+
 ## Useful Links
 
 - [Arm-based cloud computing is the next big thing: Introducing Arm on Oracle Cloud Infrastructure](https://blogs.oracle.com/cloud-infrastructure/arm-based-cloud-computing-is-the-next-big-thing-introducing-arm-on-oci)
