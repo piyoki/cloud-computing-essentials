@@ -10,7 +10,6 @@ Allow inbound traffic for a specific port. You also need to setup the firewall r
 NOTES: also need to configure public gateway rules to allow ingress traffic
 
 ```bash
->>>>>>> 4c6ed81e77c3ee8c31cf5e1a452f129c80a0fbd6
 sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 8888 -j ACCEPT
 sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 80 -j ACCEPT
 sudo iptables -I INPUT -s 0.0.0.0/0 -p tcp --dport 443 -j ACCEPT
