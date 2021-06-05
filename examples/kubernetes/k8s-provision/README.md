@@ -200,6 +200,27 @@ systemctl restart haproxy
 
 Reference: [Stacked control plane and etcd nodes](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/#stacked-control-plane-and-etcd-nodes)
 
+##### Initialize Kubernetes Cluster (HA)
+
+Notes:
+
+- Assume you have already provisioned a LoadBalancer Node using HAPorxy
+- You may need to reset the cluster node with `kubeadm reset cleanup-node`
+- `--control-plane-endpoint` specifies the `LoadBalancer's IP`
+
+```bash
+kubeadm init --control-plane-endpoint="10.10.10.200:6443" --upload-certs --apiserver-advertise-address=10.10.10.201 --pod-network-cidr=192.168.0.0/16
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+##### Deploy Calico Network
+
+```bash
+kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/manifests/calico.yaml
+```
+
 ##### Regenerate Kubeadm Token if expired
 
 Execute the following command on the `Master Node`
@@ -214,20 +235,31 @@ kubeadm init phase upload-certs --upload-certs
 kubeadm token create --certificate-key <string> --print-join-command
 ```
 
-##### Join other nodes to the cluster (kmaster2 & kworker1)
+##### Join other nodes to the cluster `kmaster2` & `kworker1`
 
 Use the respective `kubeadm join` commands you copied from the output of `kubeadm token create` command on the first master node
 
 WORKER NODE: (do not need the `--control-plan` and `--certificate-key`)
 
+Generate and Save cluster join command to `joincluser.sh` (WORKER NODE ONLY)
+
 ```bash
-kubeadm join 10.10.10.201:6443 --token 7lvd63.pvpcrmkzhlv8qcax --discovery-token-ca-cert-hash sha256:e8afa57e3baccfac5f6f6e33d030da7e7d962072c5d3b7e3e3525ccd8f3cb2c8 --control-plane --certificate-key 12cf1dd68eec2b31b60c3779e036a049e707a7d0f52b171193f42bf1b3b51a81
+kubeadm token create --print-join-command > joincluster.sh
+cat joincluser.sh
 ```
 
 MASTER NODE: (You also need to pass `--apiserver-advertise-address` to the join command when you join the other `master node`)
 
 ```bash
 kubeadm join 10.10.10.201:6443 --token 7lvd63.pvpcrmkzhlv8qcax --discovery-token-ca-cert-hash sha256:e8afa57e3baccfac5f6f6e33d030da7e7d962072c5d3b7e3e3525ccd8f3cb2c8 --control-plane --certificate-key 12cf1dd68eec2b31b60c3779e036a049e707a7d0f52b171193f42bf1b3b51a81 --apiserver-advertise-address <IP of the current machine>
+```
+
+##### Set label to the worker
+
+Execute the following command on the `Master Node`
+
+```bash
+kubectl label node <custom-label> node-role.kubernetes.io/worker=worker
 ```
 
 ## Downloading kube config to your local machine
