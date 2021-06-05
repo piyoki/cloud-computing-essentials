@@ -207,6 +207,7 @@ Reference: [Stacked control plane and etcd nodes](https://kubernetes.io/docs/set
 Notes:
 
 - Assume you have already provisioned a LoadBalancer Node using HAPorxy
+- Assume you are familiar with the basic cluster provisitioning with Kubernetes, if not please read the [instructions](https://github.com/yqlbu/cloud-computing-essentials/tree/master/examples/kubernetes/k8s-provision#install-kubernetes-cluster-using-kubeadm)
 - You may need to reset the cluster node with `kubeadm reset cleanup-node`
 - `--control-plane-endpoint` specifies the `LoadBalancer's IP`
 
