@@ -67,6 +67,8 @@ $ kubectl patch svc kubernetes-dashboard -n kubernetes-dashboard -p '{"spec":{"t
 
 The output from the above command includes an authentication token (a long alphanumeric string) as the value of the `token`: element
 
+visit `https://IP:30443` to start using the dashboard
+
 #### (Optional) Expose your Kubernetes Dashboard using a LoadBalancer
 
 ```bash
