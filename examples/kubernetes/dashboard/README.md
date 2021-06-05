@@ -10,6 +10,15 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.3
 
 #### Create the service account and the cluster-role-binding in the cluster
 
+declarative way
+
+```
+$ kubectl create serviceaccount dashboard-admin -n kube-system
+$ kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin
+```
+
+manifest way
+
 ```bash
 $ cat << EOF > oke-admin-service-account.yaml
 apiVersion: v1
