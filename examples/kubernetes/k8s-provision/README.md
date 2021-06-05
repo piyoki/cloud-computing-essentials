@@ -196,6 +196,8 @@ systemctl restart haproxy
 
 ## (Optional) Kubeadm HA | Adding Additional Nodes to the Cluster
 
+![](https://miro.medium.com/max/1500/1*u-BnPUXLPLB2VzP0xWkCZQ.png)
+
 ##### IMPORTANT: REQUIRED A LOAD BALANCER NODE!!
 
 Reference: [Stacked control plane and etcd nodes](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/#stacked-control-plane-and-etcd-nodes)
