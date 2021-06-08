@@ -2,7 +2,7 @@
 
 ## Insturctions
 
-##### Step 1: Setup IAM
+#### Step 1: Setup IAM
 
 Find the instructions in the links below:
 
@@ -10,12 +10,12 @@ Find the instructions in the links below:
 - [Your AWS account ID and its alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
 - [AWS Lambda execution role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html)
 
-##### Step 2: Setup AWS Configure
+#### Step 2: Setup AWS Configure
 
 - [Install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 - [Quick configuration with aws configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
 
-##### Step 3: Setup ECR
+#### Step 3: Setup ECR
 
 - [Using Amazon ECR with the AWS CLI](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html)
 
@@ -25,13 +25,13 @@ Modify your AWS credentials in the `makefile` and type the following command
 make ecr-login
 ```
 
-##### Step 4: Build the Container Image
+#### Step 4: Build the Container Image
 
 ```bash
 make build-image
 ```
 
-##### Step 5: Test the Container
+#### Step 5: Test the Container
 
 Spins up the container
 
@@ -51,13 +51,13 @@ NOTES:
 - you may modify the parameters in the `main.go` and rebuild the container to play around with it!
 - make sure you also change the `version tag` as you build the new container image
 
-##### Step 6: Create a ECR Repository with AWS_CLI
+#### Step 6: Create a ECR Repository with AWS_CLI
 
 ```bash
 make ecr-create-repository
 ```
 
-##### Step 7: Deploy to AWS
+#### Step 7: Deploy to AWS
 
 Tag the image
 
@@ -75,7 +75,7 @@ NOTES:
 
 - If there is a new version of the image, simply re-tag the image and push it again
 
-##### Step 8: Create the Lambda Function Associated With This Container Image
+#### Step 8: Create the Lambda Function Associated With This Container Image
 
 - Go to `AWS Console` >> `AWS Lambda` >> `Create Function`
 - Select `Container Image`, give the function a name, and then Browse images to look for the right image in my `ECR`
