@@ -8,7 +8,7 @@ Execute the following command
 
 ```bash
 terraform init
-terraform plan
+terraform plan -var "image_tag=<VERSION>"
 terraform apply -var "image_tag=<VERSION>"
 ```
 
