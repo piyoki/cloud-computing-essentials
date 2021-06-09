@@ -1,8 +1,8 @@
 ###
 
-REGION=<REGION>
-AWS_ACCOUNT_ID=<AWS_ACCOUNT_ID>
-VERSION=0.0.1
+REGION=ap-northeast-1
+AWS_ACCOUNT_ID=233482784995
+VERSION=0.0.2
 REPO_NAME=lambda-container-demo
 REPO_URI=$(AWS_ACCOUNT_ID).dkr.ecr.$(REGION).amazonaws.com/$(REPO_NAME)
 
@@ -36,7 +36,7 @@ create-function:
 	aws lambda create-function --region $(REGION) --function-name $(REPO_NAME) \
     --package-type Image \
 		--code ImageUri=$(REPO_URI):$(VERSION) \
-		--role arn:aws:iam::$(AWS_ACCOUNT_ID):role/lambda-role
+		--role arn:aws:iam::233482784995:role/lambda-role
 
 invoke-function:
 	@export PAYLOAD=$(echo '{"name": "Niceguy"}' | base64)
