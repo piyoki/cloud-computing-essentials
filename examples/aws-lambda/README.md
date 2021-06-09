@@ -57,7 +57,7 @@ Invoke the containerized functions
 
 ```bash
 curl "http://localhost:9000/2015-03-31/functions/function/invocations" \
-    -d '{"name":"Niceguy"}' && echo
+    -d '{"data":"I am a Niceguy!"}' && echo
 ```
 
 NOTES:
