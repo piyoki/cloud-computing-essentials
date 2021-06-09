@@ -1,6 +1,20 @@
-# aws-lambda
+# AWS Lambda Provisioning
 
-## Insturctions
+## Setup Insturctions
+
+### Provision with Terraform
+
+Execute the following command
+
+```bash
+terraform init
+terraform plan
+terraform apply
+```
+
+---
+
+### Provision with Makefile
 
 #### Step 1: Setup IAM
 
