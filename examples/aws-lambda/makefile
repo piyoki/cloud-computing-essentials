@@ -1,8 +1,8 @@
 ###
 
 REGION=ap-northeast-1
-AWS_ACCOUNT_ID=233482784995
-VERSION=0.0.2
+AWS_ACCOUNT_ID=<AWS_ACCOUNT_ID>
+VERSION=0.0.1
 REPO_NAME=lambda-container-demo
 REPO_URI=$(AWS_ACCOUNT_ID).dkr.ecr.$(REGION).amazonaws.com/$(REPO_NAME)
 
