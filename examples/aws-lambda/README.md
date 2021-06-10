@@ -4,7 +4,7 @@
 
 - [Provision with Terraform](#provision-with-terraform)
 - [Provision with Makefile](#provision-with-makefile)
-- [Invoke Lambda Function with API Gateway](#invoke-lambda-function-with-api-gateway)
+- [Invoke Lambda Function with API Gateway](#invoke-lamda-function-with-api-gateway)
 - [Clean Up](#clean-up)
 
 ### Provision with Terraform
@@ -121,7 +121,7 @@ curl -X POST \
 
 NOTES: you may obtain the `API Gateway Endpoint'` from the `Terraform Output`
 
-## Clean Update
+## Clean Up
 
 ```bash
 terraform destroy
