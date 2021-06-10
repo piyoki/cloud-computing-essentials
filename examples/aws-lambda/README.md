@@ -2,6 +2,11 @@
 
 ## Setup Insturctions
 
+- [Provision with Terraform](#provision-with-terraform)
+- [Provision with Makefile](#provision-with-makefile)
+- [Invoke Lambda Function with API Gateway](#invoke-lambda-function-with-api-gateway)
+- [Clean Up](#clean-up)
+
 ### Provision with Terraform
 
 Execute the following command
