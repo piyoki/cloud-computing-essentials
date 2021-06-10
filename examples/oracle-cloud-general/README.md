@@ -23,9 +23,9 @@ sudo netfilter-persistent reload
 </br>
 
 ```
-sudo iptables -P INPUT
-sudo iptables -P OUTPUT
-sudo iptables -P FORWARD
+sudo iptables -A INPUT -i lo -j ACCEPT
+sudo iptables -A OUTPUT -o lo -j ACCEPT
+sudo iptables -A FORWARD -o lo -j ACCEPT
 sudo iptables -F; sudo netfilter-persistent save
 ```
 
