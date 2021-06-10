@@ -29,6 +29,8 @@ sudo iptables -P FORWARD
 sudo iptables -F; sudo netfilter-persistent save
 ```
 
+</p></details>
+
 <details><summary>Speedtest</summary>
 
 ## Scripts
