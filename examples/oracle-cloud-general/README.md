@@ -18,6 +18,19 @@ sudo netfilter-persistent save
 sudo netfilter-persistent reload
 ```
 
+<details><summary>Enable Tracfic For All Ports</summary>
+
+</br>
+
+```
+sudo iptables -P INPUT
+sudo iptables -P OUTPUT
+sudo iptables -P FORWARD
+sudo iptables -F; sudo netfilter-persistent save
+```
+
+<details><summary>Speedtest</summary>
+
 ## Scripts
 
 <details><summary>Enable SSH with Password</summary>
