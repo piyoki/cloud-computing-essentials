@@ -45,33 +45,18 @@ make ecr-login
 make build-image
 ```
 
-#### Step 5: Test the Container
-
-Spins up the container
-
-```bash
-make test-container
-```
-
-Invoke the containerized functions
-
-```bash
-curl "http://localhost:9000/2015-03-31/functions/function/invocations" \
-    -d '{"data":"I am a Niceguy!"}' && echo
-```
-
 NOTES:
 
 - you may modify the parameters in the `main.go` and rebuild the container to play around with it!
 - make sure you also change the `version tag` as you build the new container image
 
-#### Step 6: Create a ECR Repository with AWS_CLI
+#### Step 5: Create a ECR Repository with AWS_CLI
 
 ```bash
 make ecr-create-repository
 ```
 
-#### Step 7: Deploy to AWS
+#### Step 6: Deploy to AWS
 
 Tag the image
 
@@ -89,7 +74,7 @@ NOTES:
 
 - If there is a new version of the image, simply re-tag the image and push it again
 
-#### Step 8: Create the Lambda Function Associated With This Container Image
+#### Step 7: Create the Lambda Function Associated With This Container Image
 
 - Go to `AWS Console` >> `AWS Lambda` >> `Create Function`
 - Select `Container Image`, give the function a name, and then Browse images to look for the right image in my `ECR`
@@ -118,3 +103,21 @@ After you deploy a container image to a function, the image is read-only. To upd
 5. In the **Select container image** dialog box, select the Amazon ECR repository from the dropdown list, and then select the new image version.
 
 6. Choose **Save**.
+
+---
+
+## Invoke Lamda Function with API Gateway
+
+```bash
+curl -X POST \
+  -d '{"data": "Hello from the NiceGuy!"}' \
+  <API Gateway Endpoint>
+```
+
+NOTES: you may obtain the `API Gateway Endpoint'` from the `Terraform Output`
+
+## Clean Update
+
+```bash
+terraform destroy
+```
