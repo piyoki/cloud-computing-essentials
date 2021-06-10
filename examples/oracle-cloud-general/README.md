@@ -31,8 +31,6 @@ sudo iptables -F; sudo netfilter-persistent save
 
 </p></details>
 
-<details><summary>Speedtest</summary>
-
 ## Scripts
 
 <details><summary>Enable SSH with Password</summary>
