@@ -31,6 +31,12 @@ resource "aws_ecr_repository" "repo" {
   image_scanning_configuration {
     scan_on_push = true
   }
+  encryption_configuration {
+    # use custom KMS
+    # encryption_type: "KMS"
+    # kms_key: ""
+    encryption_type = "AES256"
+  }
   tags = {
     Version = "${var.image_tag}"
   }
@@ -109,6 +115,17 @@ data "aws_iam_policy_document" "lambda" {
     effect = "Allow"
     resources = [ "arn:aws:execute-api:*:*:*" ]
     sid = "InvokeAPI"
+  }
+
+  statement {
+    actions = [
+      "ecr:SetRepositoryPolicy",
+      "ecr:GetRepositoryPolicy",
+      "ecr:InitiateLayerUpload"
+    ]
+    effect = "Allow"
+    resources = [ "arn:aws:ecr:${var.region}:${local.account_id}:repository/${local.ecr_repository_name}" ]
+    sid = "GetRepository"
   }
 }
 

@@ -5,6 +5,7 @@
 - [Provision with Terraform](#provision-with-terraform)
 - [Provision with Makefile](#provision-with-makefile)
 - [Invoke Lambda Function with API Gateway](#invoke-lamda-function-with-api-gateway)
+- [KMS Encryption](#kms-encryption)
 - [Clean Up](#clean-up)
 
 ### Provision with Terraform
@@ -126,3 +127,11 @@ NOTES: you may obtain the `API Gateway Endpoint'` from the `Terraform Output`
 ```bash
 terraform destroy
 ```
+
+## KMS Encryption
+
+![](https://d2908q01vomqb2.cloudfront.net/fe2ef495a1152561572949784c16bf23abb28057/2020/07/28/EncryptedECRImagesS3v2.1.png)
+
+#### References:
+
+- [Introducing Amazon ECR server-side encryption using AWS Key Management System](https://aws.amazon.com/blogs/containers/introducing-amazon-ecr-server-side-encryption-using-aws-key-management-system/)
