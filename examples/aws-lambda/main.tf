@@ -12,7 +12,7 @@ variable "image_tag" {
 variable "secret" {
   type        = string
   description = "Secret String"
-  default     = "nihao"
+  default     = "my secret"
 }
 
 provider "aws" {
@@ -23,7 +23,7 @@ provider "aws" {
 
 locals {
   prefix              = "dev"
-  account_id          = "233482784995"
+  account_id          = "<account_id>"
   role                = "lambda-role"
   ecr_repository_name = "${local.prefix}-demo-lambda-container"
   ecr_image_tag       = var.image_tag
