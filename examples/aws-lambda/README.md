@@ -29,6 +29,7 @@ Find the instructions in the links below:
 - [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console)
 - [Your AWS account ID and its alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
 - [AWS Lambda execution role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html)
+- [ECR Policy to Lambda](https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html#configuration-images-permissions)
 
 #### Step 2: Setup AWS Configure
 

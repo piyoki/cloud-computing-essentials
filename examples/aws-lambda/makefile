@@ -24,6 +24,7 @@ ecr-create-repository:
 	aws ecr create-repository \
 		--repository-name lambda-container-demo \
   	--image-scanning-configuration scanOnPush=true \
+		--encryption-configuration '{"encryptionType":"SHA256"}' \
 		--region $(REGION)
 
 tag-image:
