@@ -14,8 +14,8 @@ Execute the following command
 
 ```bash
 terraform init
-terraform plan -var "image_tag=<VERSION>"
-terraform apply -var "image_tag=<VERSION>"
+terraform plan -var "image_tag=<VERSION>" -var "secret=<SECRET_STRING>"
+terraform apply -var "image_tag=<VERSION>" -var "secret=<SECRET_STRING>"
 ```
 
 ---

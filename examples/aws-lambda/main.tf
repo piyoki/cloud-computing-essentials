@@ -9,6 +9,12 @@ variable "image_tag" {
   default     = "latest"
 }
 
+variable "secret" {
+  type        = string
+  description = "Secret String"
+  default     = "nihao"
+}
+
 provider "aws" {
   region                  = var.region
   profile                 = "default"
@@ -17,7 +23,7 @@ provider "aws" {
 
 locals {
   prefix              = "dev"
-  account_id          = "<account_id>"
+  account_id          = "233482784995"
   role                = "lambda-role"
   ecr_repository_name = "${local.prefix}-demo-lambda-container"
   ecr_image_tag       = var.image_tag
@@ -45,6 +51,7 @@ resource "aws_ecr_repository" "repo" {
 resource "null_resource" "ecr_image" {
   triggers = {
     docker_file = md5(file("./Dockerfile"))
+    src_file = md5(file("./main.go"))
     image_tag   = var.image_tag
   }
 
@@ -52,7 +59,7 @@ resource "null_resource" "ecr_image" {
     command = <<EOF
       aws ecr get-login-password --region ${var.region} | docker login --username AWS --password-stdin ${local.account_id}.dkr.ecr.${var.region}.amazonaws.com
       cd ${path.module}/
-      docker build -t ${aws_ecr_repository.repo.repository_url}:${local.ecr_image_tag} .
+      docker build --build-arg SECRET=${var.secret} -t ${aws_ecr_repository.repo.repository_url}:${local.ecr_image_tag} .
       docker push ${aws_ecr_repository.repo.repository_url}:${local.ecr_image_tag}
     EOF
  }
