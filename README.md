@@ -41,7 +41,7 @@ curl -fsSL https://get.hikariai.net/api/neovim | sudo bash -
 
 ## Common Tools
 
-<details><summary>Helm</summary>
+<details><summary>Docker</summary>
 
 </br>
 
