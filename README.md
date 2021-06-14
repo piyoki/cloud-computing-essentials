@@ -33,13 +33,25 @@ comping soon
 
 </br>
 
-```
+```bash
 curl -fsSL https://get.hikariai.net/api/neovim | sudo bash -
 ```
 
 </p></details>
 
 ## Common Tools
+
+<details><summary>Helm</summary>
+
+</br>
+
+```bash
+$ sudo wget -qO- https://get.docker.com/ | sh
+$ sudo usermod -aG docker $USER
+$ sudo systemctl enable docker
+```
+
+</p></details>
 
 <details><summary>Kubectl</summary>
 
