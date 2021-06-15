@@ -127,9 +127,58 @@ NOTES: you may obtain the `API Gateway Endpoint'` from the `Terraform Output`
 
 ![](https://d2908q01vomqb2.cloudfront.net/fe2ef495a1152561572949784c16bf23abb28057/2020/07/28/EncryptedECRImagesS3v2.1.png)
 
+Encrypt `environment variable` with AWS KMS and store them in git repos. AWS KMS is a powerful tool to encrypt `plaintext` into `cyphertext`. In cryptographic terms, plaintext is simply unencrypted text and ciphertext is the encrypted result. In our instance, plaintext is simply the contents of our configuration file. As it is more cost effective to encrypt the contents of a configuration file against a single `KMS key`. Running the aws kms encrypt command will encrypt the contents of the file and store it in AWS KMS. The contents of the following `JSON` configuration file can be encrypted with a single `KMS Key` as shown in the example below:
+
+```json
+{
+  "mongoUsername": "mongo-user",
+  "mongoPassword": "IRrE!jwcJkz5wGFb$Sx*$N@8^",
+  "googleApiKey": "81cc9770-c3be-44d2-a18d-9039db1f062b",
+  "facebookApiKey": "6b494a8e-f9a2-4774-8cb9-281bd73e9270"
+}
+```
+
+The below command will encrypt plaintext to ciphertext, encode the ciphertext to Base64 and return this result wrapped in JSON. Then the Base64 encoded ciphertext will be extracted from JSON, and it will be decoded to binary. Finally, the binary will be saved to a file, as binary is the expected input of the AWS KMS Decrypt command.
+
+```bash
+aws kms encrypt --key-id 64dbfdcc-8519-4f8f-a1b2-d704e652259b \
+  --plaintext file://secrets.json \
+  --output text \
+  --query CiphertextBlob | base64 --decode > secrets.encrypted.json
+```
+
+Decrypt is quite similar to encrypt. The command below decrypts the `ciphertext` back to `plaintext` and saves the results to `secrets.decrypted.json`
+
+```bash
+aws kms decrypt --ciphertext-blob fileb://secrets.encrypted.json \
+  --output text --query Plaintext | base64 --decode > secrets.decrypted.json
+```
+
+#### Advanced Method
+
+A more in depth way to encrypt `environment variable` can be done in the way as shown below:
+
+![](https://miro.medium.com/max/3676/0*ONFTYCpnrZNuWhBY.png)
+
+The following examples create a variable of `MyStrongPass` string:
+
+```bash
+ENCRYPTED_PASSWORD=$(aws kms encrypt — key-id alias/mykey — region eu-west-1 — plaintext 'MyStrongPass'| jq -r '.CiphertextBlob')
+echo $ENCRYPTED_PASSWORD
+```
+
+Then you can use this variable in your terraform codes:
+
+```bash
+aws kms decrypt --key-id <key_id> --ciphertext-blob fileb://<(echo "${ENCRYPTED_PASSWORD}" | base64 -d) --output text --query Plaintext
+```
+
 #### References:
 
 - [Introducing Amazon ECR server-side encryption using AWS Key Management System](https://aws.amazon.com/blogs/containers/introducing-amazon-ecr-server-side-encryption-using-aws-key-management-system/)
+- [Encrypt/decrypt environment variables with AWS KM](https://faun.pub/aws-kms-encrypt-decrypt-environment-variables-497527e1c8cf)
+- [How to Encrypt Secrets with the AWS Key Management Service (KMS)](https://www.humankode.com/security/how-to-encrypt-secrets-with-the-aws-key-management-service-kms)
+- [How To Use AWS KMS In AWS Lambda](https://openupthecloud.com/kms-aws-lambda/)
 
 ---
 
