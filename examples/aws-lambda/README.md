@@ -163,7 +163,7 @@ A more in depth way to encrypt `environment variable` can be done in the way as 
 The following examples create a variable of `MyStrongPass` string:
 
 ```bash
-ENCRYPTED_PASSWORD=$(aws kms encrypt — key-id alias/mykey — region eu-west-1 — plaintext 'MyStrongPass'| jq -r '.CiphertextBlob')
+ENCRYPTED_PASSWORD=$(aws kms encrypt --key-id <key-id> --plaintext 'MyStrongPass'| jq -r '.CiphertextBlob')
 echo $ENCRYPTED_PASSWORD
 ```
 
