@@ -2,10 +2,13 @@ package main
 
 import (
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/kms"
 	"os"
 )
 
@@ -17,16 +20,42 @@ type Body struct {
 
 func HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	fmt.Printf("Processing request data for request %s.\n", request.RequestContext.RequestID)
-	fmt.Printf("Body size = %d.\n", len(request.Body))
-	fmt.Printf("Secret Env: %s.\n", os.Getenv("SECRET"))
+	fmt.Printf("Body Size = %d.\n", len(request.Body))
+	fmt.Printf("Secret: %s.\n", os.Getenv("SECRET"))
+	fmt.Printf("KeyId: %s.\n", os.Getenv("KeyId"))
 
 	fmt.Println("Headers:")
 	for key, value := range request.Headers {
 		fmt.Printf("    %s: %s\n", key, value)
 	}
 
+	// Initialize a session that the SDK uses to load
+	// credentials from the shared credentials file ~/.aws/credentials
+	// and configuration from the shared configuration file ~/.aws/config.
+	sess := session.Must(session.NewSessionWithOptions(session.Options{
+		SharedConfigState: session.SharedConfigEnable,
+	}))
+
+	// Create KMS service client
+	svc := kms.New(sess)
+
 	// process data
-	rawIn, err := json.Marshal(Body{Message: "Request received!", ENV: os.Getenv("SECRET"), Data: string(request.Body)})
+	rawSecret, err := base64.StdEncoding.DecodeString(os.Getenv("SECRET"))
+	if err != nil {
+		panic(err)
+	}
+	blob := []byte(rawSecret)
+
+	// Decrypt the data
+	rawResult, err := svc.Decrypt(&kms.DecryptInput{CiphertextBlob: blob})
+	result := base64.StdEncoding.EncodeToString([]byte(string(rawResult.Plaintext)))
+	if err != nil {
+		fmt.Println("Got error decrypting data: ", err)
+		os.Exit(1)
+	}
+
+	rawOut, err := json.Marshal(Body{Message: "Request received!", ENV: result, Data: string(request.Body)})
+	fmt.Printf("result: %s.\n", result)
 	if err != nil {
 		panic(err)
 	}
@@ -34,7 +63,7 @@ func HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (
 	return events.APIGatewayProxyResponse{
 		IsBase64Encoded: false,
 		StatusCode:      200,
-		Body:            string(rawIn),
+		Body:            string(rawOut),
 	}, nil
 }
 
