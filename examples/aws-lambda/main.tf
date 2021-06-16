@@ -6,7 +6,7 @@ provider "aws" {
 
 locals {
   prefix              = "dev"
-  account_id          = "233482784995"
+  account_id          = ""
   role                = "lambda-role"
   ecr_repository_name = "${local.prefix}-demo-lambda-container"
   ecr_image_tag       = var.image_tag
@@ -19,7 +19,7 @@ locals {
 # }
 
 data "aws_kms_key" "by_key_arn" {
-  key_id = "079db531-2264-4da4-963f-c723837355e3"
+  key_id = ""
 }
 
 data "aws_kms_secrets" "password" {
@@ -30,7 +30,7 @@ data "aws_kms_secrets" "password" {
 }
 
 data "aws_kms_ciphertext" "password" {
-  key_id    = "079db531-2264-4da4-963f-c723837355e3"
+  key_id    = ""
   plaintext = data.aws_kms_secrets.password.plaintext["password"]
 }
 
