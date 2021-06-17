@@ -171,7 +171,7 @@ echo $ENCRYPTED_PASSWORD > secret.encrypted.txt
 cat secret.encrypted.txt
 ```
 
-Decode the encrypted environment variable with the KMS key
+Decode the encrypted environment variable with the KMS key:
 
 ```bash
 aws kms decrypt --key-id <key-id> \
