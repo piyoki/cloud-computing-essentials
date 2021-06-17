@@ -26,12 +26,11 @@ data "aws_kms_secrets" "password" {
   secret {
     name    = "password"
     payload = var.encrypted_password
+    # encryption_context that makes up the secret
+    # context = {
+    #   LambdaFunctionName = "${local.prefix}-lambda-go"
+    # }
   }
-}
-
-data "aws_kms_ciphertext" "password" {
-  key_id    = ""
-  plaintext = data.aws_kms_secrets.password.plaintext["password"]
 }
 
 ### ECR
@@ -147,6 +146,11 @@ data "aws_iam_policy_document" "kms" {
     actions = [
       "kms:Decrypt",
     ]
+    # condition {
+    #   test     = "StringEquals"
+    #   variable = "kms:EncryptionContext:LambdaFunctionName"
+    #   values   = ["${local.prefix}-lambda-go"]
+    # }
     resources = ["*"]
     sid       = "AllowKMSDecryption"
   }
@@ -188,7 +192,8 @@ resource "aws_lambda_function" "dev_go_lambda" {
   kms_key_arn   = data.aws_kms_key.by_key_arn.arn
   environment {
     variables = {
-      SECRET = data.aws_kms_ciphertext.password.ciphertext_blob
+      # SECRET = data.aws_kms_secrets.password.plaintext["password"]
+      SECRET = var.encrypted_password
       KeyId  = data.aws_kms_key.by_key_arn.arn
     }
   }
@@ -260,4 +265,9 @@ output "version" {
 
 output "base_url" {
   value = aws_api_gateway_deployment.deployment.invoke_url
+}
+
+output "secret" {
+  value     = data.aws_kms_secrets.password.plaintext["password"]
+  sensitive = true
 }

@@ -47,15 +47,13 @@ func HandleRequest(ctx context.Context, request events.APIGatewayProxyRequest) (
 	blob := []byte(rawSecret)
 
 	// Decrypt the data
-	rawResult, err := svc.Decrypt(&kms.DecryptInput{CiphertextBlob: blob})
-	result := base64.StdEncoding.EncodeToString([]byte(string(rawResult.Plaintext)))
+	result, err := svc.Decrypt(&kms.DecryptInput{CiphertextBlob: blob})
 	if err != nil {
-		fmt.Println("Got error decrypting data: ", err)
-		os.Exit(1)
+		panic(err)
 	}
 
-	rawOut, err := json.Marshal(Body{Message: "Request received!", ENV: result, Data: string(request.Body)})
-	fmt.Printf("result: %s.\n", result)
+	rawOut, err := json.Marshal(Body{Message: "Request received!", ENV: string(result.Plaintext), Data: string(request.Body)})
+	fmt.Printf("result: %s.\n", string(result.Plaintext))
 	if err != nil {
 		panic(err)
 	}

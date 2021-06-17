@@ -160,18 +160,28 @@ A more in depth way to encrypt `environment variable` can be done in the way as 
 
 ![](https://miro.medium.com/max/3676/0*ONFTYCpnrZNuWhBY.png)
 
-The following examples create a variable of `MyStrongPass` string:
+The following examples create a variable of `MyStrongPass` string and encrypt it with the KMS key:
 
 ```bash
-ENCRYPTED_PASSWORD=$(aws kms encrypt --key-id <key-id> --plaintext 'MyStrongPass'| jq -r '.CiphertextBlob')
-echo $ENCRYPTED_PASSWORD
+PLAINTEXT=MyStrongPass
+ENCRYPTED_PASSWORD=$(aws kms encrypt --key-id <key-id> \
+  --plaintext fileb://<(echo -n ${PLAINTEXT}) \
+  --output text --query CiphertextBlob)
+echo $ENCRYPTED_PASSWORD > secret.encrypted.txt
+cat secret.encrypted.txt
 ```
 
-Then you can use this variable in your terraform codes:
+Decode the encrypted environment variable with the KMS key
 
 ```bash
-aws kms decrypt --key-id <key_id> --ciphertext-blob fileb://<(echo "${ENCRYPTED_PASSWORD}" | base64 -d) --output text --query Plaintext
+aws kms decrypt --key-id <key-id> \
+  --ciphertext-blob fileb://<(cat secret.encrypted.txt | base64 -d ) --query Plaintext --output text | base64 -d
 ```
+
+#### TODO:
+
+- Add `context` as part of the encryption and decryption
+- Add JSON encryption
 
 #### References:
 
