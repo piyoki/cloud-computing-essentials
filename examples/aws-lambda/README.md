@@ -178,6 +178,14 @@ aws kms decrypt --key-id <key-id> \
   --ciphertext-blob fileb://<(cat secret.encrypted.txt | base64 -d ) --query Plaintext --output text | base64 -d
 ```
 
+Verify the result by making an API call to the endpoint
+
+```bash
+curl -X "POST" \
+  -d '{"data": "hello"}' \
+  <api-endpoint>
+```
+
 #### TODO:
 
 - Add `context` as part of the encryption and decryption
