@@ -252,22 +252,3 @@ resource "aws_lambda_permission" "api_invoke_lambda_permission" {
   source_arn    = "${aws_api_gateway_rest_api.api.execution_arn}/*"
 }
 
-
-### Outputs
-
-output "lambda_name" {
-  value = aws_lambda_function.dev_go_lambda.id
-}
-
-output "version" {
-  value = var.image_tag
-}
-
-output "base_url" {
-  value = aws_api_gateway_deployment.deployment.invoke_url
-}
-
-output "secret" {
-  value     = data.aws_kms_secrets.password.plaintext["password"]
-  sensitive = true
-}
