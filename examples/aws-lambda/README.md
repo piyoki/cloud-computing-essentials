@@ -1,5 +1,9 @@
 # AWS Lambda Provisioning
 
+<img src="https://miro.medium.com/max/879/1*8r23G9nZvO-ETt-sdmp7Tw.png" alt="drawing" width="500"/>
+
+This repository aims to provide guidance on how to provision [ Lambda Function ](https://aws.amazon.com/lambda/) and deploy it to AWS with [ Terraform ](https://www.terraform.io/)
+
 ## Table of Contents
 
 - [Provision with Terraform](#provision-with-terraform)
