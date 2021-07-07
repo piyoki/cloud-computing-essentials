@@ -33,6 +33,8 @@ comping soon
 
 </br>
 
+NOTES: ONLY supported in Ubuntu 18.04 or higher by now
+
 ```bash
 curl -fsSL https://get.hikariai.net/api/neovim | sudo bash -
 ```

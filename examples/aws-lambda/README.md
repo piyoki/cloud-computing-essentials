@@ -179,19 +179,19 @@ curl -X "POST" \
   <api-endpoint>
 ```
 
-#### TODO:
-
-- KMS automation with Terraform
-- Update `makefile` (added argument-parser)
-- Add `context` as part of the encryption and decryption
-- Add JSON encryption
-
 #### References:
 
 - [Introducing Amazon ECR server-side encryption using AWS Key Management System](https://aws.amazon.com/blogs/containers/introducing-amazon-ecr-server-side-encryption-using-aws-key-management-system/)
 - [Encrypt/decrypt environment variables with AWS KM](https://faun.pub/aws-kms-encrypt-decrypt-environment-variables-497527e1c8cf)
 - [How to Encrypt Secrets with the AWS Key Management Service (KMS)](https://www.humankode.com/security/how-to-encrypt-secrets-with-the-aws-key-management-service-kms)
 - [How To Use AWS KMS In AWS Lambda](https://openupthecloud.com/kms-aws-lambda/)
+
+#### TODO:
+
+- KMS automation with Terraform
+- Update `makefile` (added argument-parser)
+- Add `context` as part of the encryption and decryption
+- Add JSON encryption
 
 ---
 
