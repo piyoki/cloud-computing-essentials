@@ -59,6 +59,10 @@ curl -so- 86.re/bench.sh | bash
 # OR (CN)
 
 bash <(curl -Lso- https://git.io/superspeed)
+
+# OR (Lemon)
+
+wget -qO- http://ilemonra.in/LemonBenchIntl | bash -s fast
 ```
 
 </p></details>
