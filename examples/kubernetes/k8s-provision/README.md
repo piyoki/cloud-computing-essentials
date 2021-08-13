@@ -91,9 +91,11 @@ modified the IP to fit your case
 
 ```bash
 cat >>/etc/hosts<<EOF
-10.10.10.201   kmaster.example.com     kmaster
-10.10.10.202   kworker1.example.com    kworker1
-10.10.10.203   kworker2.example.com    kworker2
+10.10.10.201   galaxy-01
+10.10.10.202   galaxy-02
+10.10.10.203   comet-01
+10.10.10.204   comet-02
+10.10.10.205   comet-03
 EOF
 ```
 
@@ -107,10 +109,10 @@ kubeadm config images pull
 
 ##### Initialize Kubernetes Cluster
 
-Where `10.10.10.201` is the IP address of this node
+Where `10.10.10.201` is the IP address of this `master node`
 
 ```bash
-kubeadm init --apiserver-advertise-address=10.10.10.201 --pod-network-cidr=192.168.0.0/16 >> /root/kubeinit.log
+kubeadm init --apiserver-advertise-address=10.10.10.201 --pod-network-cidr=10.244.0.0/16 >> /root/kubeinit.log
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -175,7 +177,7 @@ Append the below lines to `/etc/haproxy/haproxy.cfg`
 
 ```bash
 frontend kubernetes-frontend
-    bind 10.10.10.200:6443
+    bind 10.10.10.155:6443
     mode tcp
     option tcplog
     default_backend kubernetes-backend
@@ -212,7 +214,7 @@ Notes:
 - `--control-plane-endpoint` specifies the `LoadBalancer's IP`
 
 ```bash
-kubeadm init --control-plane-endpoint="10.10.10.200:6443" --upload-certs --apiserver-advertise-address=10.10.10.201 --pod-network-cidr=192.168.0.0/16
+kubeadm init --control-plane-endpoint="10.10.10.155:6443" --upload-certs --apiserver-advertise-address=10.10.10.201 --pod-network-cidr=10.244.0.0/16
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
