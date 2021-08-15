@@ -264,7 +264,7 @@ kubeadm join 10.10.10.201:6443 --token 7lvd63.pvpcrmkzhlv8qcax --discovery-token
 Execute the following command on the `Master Node`
 
 ```bash
-kubectl label node <custom-label> node-role.kubernetes.io/worker=worker
+kubectl label node <node-name> node-role.kubernetes.io/worker=worker
 ```
 
 ## Downloading kube config to your local machine
