@@ -5,7 +5,7 @@
 #### Deploy the Kubernetes Dashboard on the new cluster
 
 ```bash
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.3/aio/deploy/recommended.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
 ```
 
 #### Create the service account and the cluster-role-binding in the cluster
