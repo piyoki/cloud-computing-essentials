@@ -40,7 +40,7 @@ The following example asks Tekton to request a Persistent Volume of `5Gi` with t
 
 ```bash
 kubectl create configmap config-artifact-pvc \
-                         --from-literal=size=5Gi \
+                         --from-literal=size=1Gi \
                          --from-literal=storageClassName=longhorn \
                          -o yaml -n tekton-pipelines \
                          --dry-run=client | kubectl replace -f -

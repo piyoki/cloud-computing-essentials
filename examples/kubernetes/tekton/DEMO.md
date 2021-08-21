@@ -35,7 +35,7 @@ kubectl create namespace production
 ```bash
 cat cd.yaml
 
-kubectl apply -f cd.yml
+kubectl apply -f pipeline.yml
 
 kubectl --namespace tekton-builds \
     get pipelines
@@ -45,10 +45,10 @@ kubectl --namespace tekton-builds \
 
 ```bash
 tkn --namespace tekton-builds \
-    pipeline start toolkit \
+    pipeline start littlelink-server-pipeline \
     --dry-run
 
-cat cd-run.yaml
+cat pipeline-run.yaml
 
 kubectl create --filename cd-run.yaml
 
