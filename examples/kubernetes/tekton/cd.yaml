@@ -2,7 +2,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: toolkit
+  name: littlelink-server-pipeline
   namespace: tekton-builds
 spec:
   # params definition

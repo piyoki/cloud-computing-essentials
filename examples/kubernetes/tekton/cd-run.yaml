@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: littlelink-server-run-
+  namespace: tekton-builds
+spec:
+  pipelineRef:
+    name: littlelink-server-pipeline
+  workspaces:
+    - name: littlelink-server
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 100Mi
+          accessModes:
+            - ReadWriteOnce
