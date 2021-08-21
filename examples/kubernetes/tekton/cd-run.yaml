@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: littlelink-server-run-
+  generateName: littlelink-server-pipeline-run
   namespace: tekton-builds
 spec:
   pipelineRef:

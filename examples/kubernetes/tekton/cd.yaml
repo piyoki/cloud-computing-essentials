@@ -30,15 +30,23 @@ spec:
         - name: app_repo
           value: git://github.com/yqlbu/$(params.project)
         - name: container_image
-          value: yqlbu/$(params.project)
+          value: hikariai/$(params.project)
         - name: container_tag
           value: "$(params.release)"
+    - name: tests
+      taskRef:
+        name: task-echo
+      params:
+        - name: message
+          value: Running integration tests (before, during, and after the deployment is finished)...
+      runAfter:
+        - build-container-image
     - name: deploy-staging
       taskRef:
         name: task-kustomize
       params:
         - name: container_image
-          value: yqlbu/$(params.project)
+          value: hikariai/$(params.project)
         - name: container_tag
           value: "$(params.release)"
         - name: manifests_path
@@ -49,20 +57,12 @@ spec:
       runAfter:
         - build-container-image
         - git-clone
-    - name: tests
-      taskRef:
-        name: task-echo
-      params:
-        - name: message
-          value: Running integration tests (before, during, and after the deployment is finished)...
-      runAfter:
-        - deploy-staging
     - name: deploy-production
       taskRef:
         name: task-kustomize
       params:
         - name: container_image
-          value: yqlbu/$(params.project)
+          value: hikariai/$(params.project)
         - name: container_tag
           value: "$(params.release)"
         - name: manifests_path
