@@ -101,7 +101,7 @@ modified the IP to fit your case
 cat >>/etc/hosts<<EOF
 10.10.10.201   galaxy-01
 10.10.10.202   galaxy-02
-10.10.10.203   galaxy-02
+10.10.10.203   galaxy-03
 10.10.10.211   comet-01
 10.10.10.212   comet-02
 10.10.10.213   comet-03
