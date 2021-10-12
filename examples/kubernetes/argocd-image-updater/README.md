@@ -22,6 +22,9 @@ Install the `Cluster-Side` Controller
 ```bash
 # Apply the installation manifests
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
+# Check if the resources are created
+kubectl rollout status deploy/argocd-image-updater -n argocd
+kubectl get all -n argocd
 ```
 
 ## Deploy an updatable app
