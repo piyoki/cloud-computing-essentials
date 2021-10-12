@@ -11,8 +11,8 @@ Argo CD Image Updater for automating image update
 ```bash
 VERSION=$(curl --silent "https://api.github.com/repos/argoproj-labs/argocd-image-updater/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
 
-wget https://github.com/argoproj-labs/argocd-image-updater/releases/download/$VERSION/argocd-image-updater_"$VERSION"_linux-amd64 -O /usr/local/bin/argocd-image-updater
-chmod 755 /usr/local/bin/argocd-image-updater
+sudo wget https://github.com/argoproj-labs/argocd-image-updater/releases/download/$VERSION/argocd-image-updater_"$VERSION"_linux-amd64 -O /usr/local/bin/argocd-image-updater
+sudo chmod 755 /usr/local/bin/argocd-image-updater
 
 argocd-image-updater version
 ```
