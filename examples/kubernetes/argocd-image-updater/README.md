@@ -4,7 +4,7 @@ Argo CD Image Updater for automating image update
 
 ## Reference
 
-- [](https://devopstales.github.io/kubernetes/argocd-image-updater/)
+- [ArgoCD Image Updater Tutorial](https://devopstales.github.io/kubernetes/argocd-image-updater/)
 
 ## Install ArgoCD Image Updater
 
