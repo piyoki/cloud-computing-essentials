@@ -16,13 +16,12 @@ sudo chmod 755 /usr/local/bin/argocd-image-updater
 
 argocd-image-updater version
 ```
+
 Install the `Cluster-Side` Controller
 
 ```bash
-cd /opt
-git clone https://github.com/argoproj-labs/argocd-image-updater.git
-cd argocd-image-updater/manifests/
-kubectl apply -f install.yaml
+# Apply the installation manifests
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
 ```
 
 ## Deploy an updatable app
