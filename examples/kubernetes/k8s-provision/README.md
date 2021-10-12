@@ -49,19 +49,23 @@ sysctl --system
 ##### Install Containerd Runtime
 
 ```bash
-apt update -qq
-apt install -qq -y containerd apt-transport-https
-mkdir /etc/containerd
-containerd config default > /etc/containerd/config.toml
-systemctl restart containerd
-systemctl enable containerd
+{
+    apt update -qq
+    apt install -qq -y containerd apt-transport-https
+    mkdir /etc/containerd
+    containerd config default > /etc/containerd/config.toml
+    systemctl restart containerd
+    systemctl enable containerd
+}
 ```
 
 ##### Add apt repo for Kubernetes
 
 ```bash
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+{
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+}
 ```
 
 ##### Install Kubernetes components (kubeadm, kubelet and kubectl)
@@ -73,16 +77,20 @@ apt install -qq -y kubeadm kubelet kubectl
 ##### Enable ssh password authentication
 
 ```bash
-sed -i 's/^PasswordAuthentication .*/PasswordAuthentication yes/' /etc/ssh/sshd_config
-echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
-systemctl reload sshd
+{
+    sed -i 's/^PasswordAuthentication .*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+    echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
+    systemctl reload sshd
+}
 ```
 
 ##### Set root password
 
 ```bash
-echo -e "kubeadmin\nkubeadmin" | passwd root
-echo "export TERM=xterm" >> /etc/bash.bashrc
+{
+    echo -e "kubeadmin\nkubeadmin" | passwd root
+    echo "export TERM=xterm" >> /etc/bash.bashrc
+}
 ```
 
 ##### Update /etc/hosts file
@@ -93,9 +101,10 @@ modified the IP to fit your case
 cat >>/etc/hosts<<EOF
 10.10.10.201   galaxy-01
 10.10.10.202   galaxy-02
-10.10.10.203   comet-01
-10.10.10.204   comet-02
-10.10.10.205   comet-03
+10.10.10.203   galaxy-03
+10.10.10.211   comet-01
+10.10.10.212   comet-02
+10.10.10.213   comet-03
 EOF
 ```
 
@@ -112,10 +121,12 @@ kubeadm config images pull
 Where `10.10.10.201` is the IP address of this `master node`
 
 ```bash
-kubeadm init --apiserver-advertise-address=10.10.10.201 --pod-network-cidr=10.244.0.0/16 >> /root/kubeinit.log
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+{
+    kubeadm init --apiserver-advertise-address=10.10.10.201 --pod-network-cidr=10.244.0.0/16 >> /root/kubeinit.log
+    mkdir -p $HOME/.kube
+    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+}
 ```
 
 ##### (Optional) Reset kubeadmin if anything goes wrong
@@ -188,6 +199,7 @@ backend kubernetes-backend
     balance roundrobin
     server kmaster1 10.10.10.201:6443 check fall 3 rise 2
     server kworker1 10.10.10.202:6443 check fall 3 rise 2
+    server kworker1 10.10.10.203:6443 check fall 3 rise 2
 ```
 
 ##### Restart haproxy service
@@ -214,10 +226,12 @@ Notes:
 - `--control-plane-endpoint` specifies the `LoadBalancer's IP`
 
 ```bash
-kubeadm init --control-plane-endpoint="10.10.10.155:6443" --upload-certs --apiserver-advertise-address=10.10.10.201 --pod-network-cidr=10.244.0.0/16
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+{
+    kubeadm init --control-plane-endpoint="10.10.10.119:6443" --upload-certs --apiserver-advertise-address=10.10.10.201 --pod-network-cidr=10.244.0.0/16
+    mkdir -p $HOME/.kube
+    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+}
 ```
 
 ##### Deploy Calico Network
@@ -272,8 +286,10 @@ kubectl label node <node-name> node-role.kubernetes.io/worker=worker
 On your host machine
 
 ```bash
-mkdir ~/.kube
-scp root@<target-ip>:/etc/kubernetes/admin.conf ~/.kube/config
+{
+    mkdir ~/.kube
+    scp root@<target-ip>:/etc/kubernetes/admin.conf ~/.kube/config
+}
 ```
 
 ## Verifying the cluster
