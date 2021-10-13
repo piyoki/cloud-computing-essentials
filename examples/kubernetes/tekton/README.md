@@ -1,5 +1,9 @@
 # Tekton Pipelines
 
+## Reference
+
+- [Tutorial: Tekton Triggers with GitHub Integration](https://www.arthurkoziel.com/tutorial-tekton-triggers-with-github-integration/#creating-a-pr-and-testing-our-trigger)
+
 ## Installation
 
 ### Install the CLI
