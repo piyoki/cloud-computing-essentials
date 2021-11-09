@@ -25,7 +25,7 @@
 
 ## Navigation
 
-comping soon
+coming soon
 
 ## Bootstrap Scripts
 
