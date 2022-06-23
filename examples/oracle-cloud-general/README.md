@@ -63,6 +63,10 @@ bash <(curl -Lso- https://git.io/superspeed)
 # OR (Lemon)
 
 wget -qO- http://ilemonra.in/LemonBenchIntl | bash -s fast
+
+# OR (Superbench)
+
+wget -qO- git.io/superbench.sh | bash
 ```
 
 </p></details>
