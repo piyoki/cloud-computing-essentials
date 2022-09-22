@@ -32,6 +32,22 @@ sudo netfilter-persistent save
 
 </p></details>
 
+## Enable BBR
+
+```bash
+echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+sysctl -p
+
+# verify
+sysctl net.ipv4.tcp_available_congestion_control
+# successful console ouput
+# net.ipv4.tcp_available_congestion_control = reno cubic bbr
+lsmod | grep bbr
+# successful console ouput
+tcp_bbr 24576 1
+```
+
 ## Scripts
 
 <details><summary>Enable SSH with Password</summary>
