@@ -27,3 +27,19 @@ bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/MoeCl
 sudo apt install -y curl socat
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 ```
+
+## Netflix Unlock Verification Script
+
+https://github.com/netflixxp/NF
+
+```
+bash <(curl -sSL https://raw.githubusercontent.com/Netflixxp/NF/main/nf.sh)
+```
+
+## Warp Script
+
+https://github.com/fscarmen/warp
+
+```
+wget -N https://raw.githubusercontent.com/fscarmen/warp/main/menu.sh && bash menu.sh
+```
