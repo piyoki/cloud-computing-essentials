@@ -32,14 +32,20 @@ bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 
 https://github.com/netflixxp/NF
 
-```
+```bash
 bash <(curl -sSL https://raw.githubusercontent.com/Netflixxp/NF/main/nf.sh)
+```
+
+## Check Media Unlock Script
+
+```bash
+bash <(curl -L -s check.unlock.media)
 ```
 
 ## Warp Script
 
 https://github.com/fscarmen/warp
 
-```
+```bash
 wget -N https://raw.githubusercontent.com/fscarmen/warp/main/menu.sh && bash menu.sh
 ```
