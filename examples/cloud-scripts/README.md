@@ -49,3 +49,9 @@ https://github.com/fscarmen/warp
 ```bash
 wget -N https://raw.githubusercontent.com/fscarmen/warp/main/menu.sh && bash menu.sh
 ```
+
+## X-UI Dashboard Script
+
+```bash
+bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+```
