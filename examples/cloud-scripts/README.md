@@ -28,12 +28,21 @@ sudo apt install -y curl socat
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 ```
 
-## Netflix Unlock Verification Script
 
-https://github.com/netflixxp/NF
+## Netflix Verify Script
+
+https://github.com/sjlleo/netflix-verify
+
+`amd64`
 
 ```bash
-bash <(curl -sSL https://raw.githubusercontent.com/Netflixxp/NF/main/nf.sh)
+wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/v3.1.0/nf_linux_amd64 && chmod +x nf && ./nf
+```
+
+`arm64`
+
+```bash
+wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/v3.1.0/nf_linux_arm64 && chmod +x nf && ./nf
 ```
 
 ## Check Media Unlock Script
