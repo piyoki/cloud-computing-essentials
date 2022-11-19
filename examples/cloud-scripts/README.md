@@ -81,6 +81,15 @@ systemctl restart xray
 
 </details>
 
+<details><summary>change ip</summary>
+</br>
+
+```bash
+systemctl restart warp-svc
+```
+
+</details>
+
 ## ACME Script
 
 ```bash
