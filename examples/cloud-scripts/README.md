@@ -15,6 +15,72 @@ warp-cli connect
 curl ifconfig.me --proxy socks5://127.0.0.1:40000
 ```
 
+<details><summary>inspect unlock status</summary>
+</br>
+
+```bash
+# original ip
+./nf
+# with warp ip
+./nf -proxy socks5://127.0.0.1:40000
+```
+
+</details>
+
+<details><summary>xray config</summary>
+</br>
+
+```json
+{
+   "outbounds": [
+       {
+           "protocol": "freedom",
+           "settings": {}
+       },
+       {
+           "tag": "stream",
+           "sendThrough": "0.0.0.0",
+           "protocol": "socks",
+           "settings": {
+               "servers": [
+                   {
+                       "address": "127.0.0.1",
+                       "port": 40000,
+                       "users": []
+                   }
+               ]
+           }
+       }
+   ],
+   "routing": {
+       "rules": [
+           {
+               "ip": [
+                   "geoip:private"
+               ],
+               "outboundTag": "blocked",
+               "type": "field"
+           },
+           {
+               "type": "field",
+               "domains": [
+                   "geosite:netflix"
+               ],
+               "outboundTag": "stream"
+           }
+       ]
+   }
+}
+```
+
+restart xray
+
+```
+systemctl restart xray
+```
+
+</details>
+
 ## ACME Script
 
 ```bash
@@ -62,12 +128,4 @@ wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/v3.1.0/nf_
 
 ```bash
 bash <(curl -L -s check.unlock.media)
-```
-
-## Warp Script
-
-https://github.com/fscarmen/warp
-
-```bash
-wget -N https://raw.githubusercontent.com/fscarmen/warp/main/menu.sh && bash menu.sh
 ```
