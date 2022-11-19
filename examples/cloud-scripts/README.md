@@ -15,18 +15,6 @@ warp-cli connect
 curl ifconfig.me --proxy socks5://127.0.0.1:40000
 ```
 
-<details><summary>inspect unlock status</summary>
-</br>
-
-```bash
-# original ip
-./nf
-# with warp ip
-./nf -proxy socks5://127.0.0.1:40000
-```
-
-</details>
-
 <details><summary>xray config</summary>
 </br>
 
@@ -77,6 +65,18 @@ restart xray
 
 ```
 systemctl restart xray
+```
+
+</details>
+
+<details><summary>inspect unlock status</summary>
+</br>
+
+```bash
+# original ip
+./nf
+# with warp ip
+./nf -proxy socks5://127.0.0.1:40000
 ```
 
 </details>
