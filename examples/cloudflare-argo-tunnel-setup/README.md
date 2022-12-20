@@ -32,7 +32,8 @@ This gist aims to walk you through the process of setting up `reverse-proxy` via
 
 Before you start, make sure you:
 
--[Add a website to Cloudflare](https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/). -[Change your domain nameservers to Cloudflare](https://support.cloudflare.com/hc/en-us/articles/205195708).
+-[Add a website to Cloudflare](https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/).
+-[Change your domain nameservers to Cloudflare](https://support.cloudflare.com/hc/en-us/articles/205195708).
 
 ---
 
@@ -73,7 +74,7 @@ Running this command will:
 - Create a tunnel by establishing a persistent relationship between the name you provide and a UUID for your tunnel. At this point, no connection is active within the tunnel yet.
 - Generate a tunnel credentials file in the default cloudflared directory.
 - Create a subdomain of .cfargotunnel.com.
-  From the output of the command, take note of the tunnel’s UUID and the path to your tunnel’s credentials file.
+From the output of the command, take note of the tunnel’s UUID and the path to your tunnel’s credentials file.
 
 Confirm that the tunnel has been successfully created by running:
 
@@ -87,7 +88,6 @@ Create a [configuration file](https://developers.cloudflare.com/cloudflare-one/c
 
 ```ym
 # ~/.cloudflared/config.yml
-
 tunnel: <UUID>
 credentials-file: /root/.cloudflared/<UUID>.json
 ingress:
@@ -95,7 +95,6 @@ ingress:
     originRequest:
       originServer: <DOMAIN_OF_YOUR_VPS e.g example.com>
       noTLSVerify: true
-
 ```
 
 ### Run cloudflared as a service
@@ -180,6 +179,7 @@ Create default config directory
 $ sudo -i
 $ mkdir -p /etc/traefik
 $ mkdir -p /etc/traefik/certs
+$ touch -p /var/log/traefik.log
 ```
 
 Edit `/etc/traefik/traefik.yml`
@@ -187,6 +187,10 @@ Edit `/etc/traefik/traefik.yml`
 ```yaml
 # /etc/traefik/traefik.yml
 ---
+log:
+  filePath: "/var/log/traefik.log"
+  level: DEBUG
+
 api:
   dashboard: true
   debug: true
@@ -226,20 +230,21 @@ http:
       service: main
       middlewares:
         - default-headers
+        - https-redirect
       tls:
         domains:
           - main: "<YOUR_DOMAIN>"
       entryPoints:
         - https
-
+        
      <OTHER_CUSTOM_ROUTES_GOES_HERE>
 
   services:
     main:
       loadBalancer:
         servers:
-          - url: "http://<YOUR_VPS_PUBLIC_IP>:3000"
-
+          - url: "http://<YOUR_VPS_PUBLIC_IP>:<INTERNAL_SERVICE_PORT>" # e.g xx.xx.xx.xx:8080
+          
     <OTHER_CUSTOM_SERVICE_GOES_HERE>
 
   middlewares:
