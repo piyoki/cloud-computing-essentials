@@ -223,7 +223,7 @@ http:
   routers:
     main:
       rule: "Host(`<YOUR_DOMAIN>`) && PathPrefix(`/`)"
-      service: freshrss
+      service: main
       middlewares:
         - default-headers
       tls:
