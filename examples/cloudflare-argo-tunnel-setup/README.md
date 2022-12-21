@@ -10,6 +10,7 @@
   - [Create a configuration file](#create-a-configuration-file)
   - [Run cloudflared as a service](#run-cloudflared-as-a-service)
   - [Check the tunnel](#check-the-tunnel)
+  - [Add CNAME record to CloudFlare Dashboard](#add-cname-record-to-cloudflare-dashboard)
 - [Traefik Setup](#traefik-setup)
   - [Install Docker and Docker-Compose](#install-docker-and-docker-compose)
   - [Obtain CloudFlare DNS API Token](#obtain-cloudFlare-dns-api-token)
@@ -124,6 +125,16 @@ Your tunnel configuration is complete! If you want to get information on the tun
 ```bash
 $ cloudflared tunnel info <TUNNEL UUID>
 ```
+
+### Add CNAME record to CloudFlare Dashboard
+
+```bash
+<TUNNEL UUID>.cfargotunnel.com
+```
+
+![](https://nrmjjlvckvsb.compat.objectstorage.ap-tokyo-1.oraclecloud.com/picgo/2022/12-21-a17abc05f93a92a72c37dfd2fed89512.png)
+
+Make sure the `Proxy status` is set to `Proxied`
 
 ## Traefik Setup
 
