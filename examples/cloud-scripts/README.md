@@ -18,6 +18,8 @@ curl ifconfig.me --proxy socks5://127.0.0.1:40000
 <details><summary>xray config</summary>
 </br>
 
+socks5
+
 ```json
 {
    "outbounds": [
