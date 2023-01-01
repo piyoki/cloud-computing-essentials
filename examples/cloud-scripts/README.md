@@ -140,3 +140,18 @@ wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/v3.1.0/nf_
 ```bash
 bash <(curl -L -s check.unlock.media)
 ```
+
+Enhanced version
+
+```bash
+bash <(curl -L -s check.unlock.media)
+
+# ipv4 only
+bash <(curl -L -s check.unlock.media) -M 4
+
+# ipv6 only
+bash <(curl -L -s check.unlock.media) -M 6
+
+# specify interface
+bash <(curl -L -s check.unlock.media) -I eth0
+```
