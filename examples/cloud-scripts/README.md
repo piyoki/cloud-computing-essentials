@@ -1,5 +1,15 @@
 # Cloud Scripts
 
+## Enable IP Forwarding
+
+```bash
+cat >>/etc/sysctl.d/dae.conf<<EOF
+net.ipv4.ip_forward                 = 1
+net.ipv6.conf.all.forwarding        = 1
+EOF
+sysctl --system
+```
+
 ## Cloudflare Warp
 
 Reference: http://pkg.cloudflareclient.com/install
