@@ -3,11 +3,11 @@
 ## Enable IP Forwarding
 
 ```bash
-cat >>/etc/sysctl.d/dae.conf<<EOF
-net.ipv4.ip_forward                 = 1
-net.ipv6.conf.all.forwarding        = 1
+sudo tee /etc/sysctl.d/dae.conf<<EOF
+net.ipv4.ip_forward = 1
+net.ipv6.conf.all.forwarding = 1
 EOF
-sysctl --system
+sudo sysctl --system
 ```
 
 ## Cloudflare Warp
