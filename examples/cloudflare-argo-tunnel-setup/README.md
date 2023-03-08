@@ -17,6 +17,7 @@
   - [Configure Traefik](#configure-traefik)
   - [Spin up the traefik container instance](#spin-up-the-traefik-container-instance)
 - [Add Addtional Routes](#add-additional-reverse-proxy-routes)
+- [Kubernetes Setup](#kubernetes-setup)
 
 ## Introduction
 
@@ -33,8 +34,7 @@ This gist aims to walk you through the process of setting up `reverse-proxy` via
 
 Before you start, make sure you:
 
--[Add a website to Cloudflare](https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/).
--[Change your domain nameservers to Cloudflare](https://support.cloudflare.com/hc/en-us/articles/205195708).
+-[Add a website to Cloudflare](https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/). -[Change your domain nameservers to Cloudflare](https://support.cloudflare.com/hc/en-us/articles/205195708).
 
 ---
 
@@ -75,7 +75,7 @@ Running this command will:
 - Create a tunnel by establishing a persistent relationship between the name you provide and a UUID for your tunnel. At this point, no connection is active within the tunnel yet.
 - Generate a tunnel credentials file in the default cloudflared directory.
 - Create a subdomain of .cfargotunnel.com.
-From the output of the command, take note of the tunnel’s UUID and the path to your tunnel’s credentials file.
+  From the output of the command, take note of the tunnel’s UUID and the path to your tunnel’s credentials file.
 
 Confirm that the tunnel has been successfully created by running:
 
@@ -247,7 +247,7 @@ http:
           - main: "<YOUR_DOMAIN>"
       entryPoints:
         - https
-        
+
      <OTHER_CUSTOM_ROUTES_GOES_HERE>
 
   services:
@@ -255,7 +255,7 @@ http:
       loadBalancer:
         servers:
           - url: "http://<YOUR_VPS_PUBLIC_IP>:<INTERNAL_SERVICE_PORT>" # e.g xx.xx.xx.xx:8080
-          
+
     <OTHER_CUSTOM_SERVICE_GOES_HERE>
 
   middlewares:
@@ -306,3 +306,10 @@ e.g.
 ![](https://nrmjjlvckvsb.compat.objectstorage.ap-tokyo-1.oraclecloud.com/picgo/2022/08-21-da10b60c90aa45d16280fac440d39209.png)
 
 In the `/etc/traefik/traefik.yml` file, follow the default config pattern and add additional routes and services.
+
+---
+
+## Kubernetes Setup
+
+- https://developers.cloudflare.com/cloudflare-one/tutorials/many-cfd-one-tunnel
+- https://github.com/cloudflare/argo-tunnel-examples/tree/master/named-tunnel-k8s
