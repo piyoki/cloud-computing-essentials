@@ -36,6 +36,25 @@ sudo netfilter-persistent save
 
 </p></details>
 
+<details><summary>Set Up UFW</summary>
+</br>
+
+```
+sudo systemctl disable firewalld --now
+sudo apt install ufw
+sudo systemctl enable ufw --now
+
+sudo ufw limit 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
+sudo ufw status
+```
+  
+</details>
+
 ## Enable BBR
 
 ```bash
