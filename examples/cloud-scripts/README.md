@@ -102,18 +102,6 @@ systemctl restart warp-svc
 
 </details>
 
-## ACME Script
-
-```bash
-bash <(curl -L -s https://gitlab.com/rwkgyg/acme-script/raw/main/acme.sh)
-```
-
-## X-UI Script (Enhanced Version)
-
-```bash
-wget -N https://gitlab.com/rwkgyg/x-ui-yg/raw/main/install.sh && bash install.sh
-```
-
 ## V2ray Agent Script
 
 ```bash
